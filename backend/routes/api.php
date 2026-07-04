@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\MediaController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ServiceCardController;
 use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\SitemapController;
 use App\Http\Middleware\RequireAdmin;
 use App\Http\Middleware\RequireEditor;
 
@@ -22,7 +23,9 @@ use App\Http\Middleware\RequireEditor;
 
 // ── Públicas
 Route::post('/auth/login',  [AuthController::class, 'login']);
-Route::post('/contact',      [ContactController::class, 'send']);        // Formulário de contato público
+Route::post('/contact',      [ContactController::class, 'send']);
+Route::get('/sitemap.xml',   [SitemapController::class, 'index']);  // Sitemap dinâmico
+Route::get('/sitemap/info',  [SitemapController::class, 'json']);   // Info para o admin        // Formulário de contato público
 
 // ── Autenticadas
 Route::middleware('auth:sanctum')->group(function () {

@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  SITEMAP ESTÁTICO — usado apenas em desenvolvimento local.
+  
+  EM PRODUÇÃO: o sitemap dinâmico é servido pela API Laravel em:
+    https://ejtecnologia.com.br/api/sitemap.xml
+  
+  Ele inclui automaticamente todos os posts publicados.
+  Configure o robots.txt para apontar para o sitemap dinâmico após deploy.
+-->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://ejtecnologia.com.br/</loc>
@@ -18,4 +27,5 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <!-- Posts são adicionados dinamicamente pela API em produção -->
 </urlset>

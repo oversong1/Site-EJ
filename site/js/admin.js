@@ -457,6 +457,15 @@ function loadContentSection() {
     }
 
     // Adiciona Cards de Serviços nas abas Home e Serviços
+    if (tab === 'Global') {
+      html += '<div style="background:rgba(108,99,255,.06);border:1px solid rgba(108,99,255,.2);border-radius:var(--radius);padding:1.1rem;margin-top:1rem">';
+      html += '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem">';
+      html += '<h4 style="font-size:.875rem;font-weight:700;color:var(--primary-light);margin:0">Sitemap do site</h4>';
+      html += '<span style="font-size:.75rem;color:var(--text-mut)">Atualiza automaticamente com novos posts</span>';
+      html += '</div>';
+      html += '<div id="sitemap-info-box" style="min-height:40px"></div>';
+      html += '</div>';
+    }
     if (tab === 'Home') {
       html += '<div id="content-cards-section" data-section="both"></div>';
     }
@@ -488,6 +497,9 @@ function loadContentSection() {
     var el = document.getElementById(id);
     if (el) loadContentCards(el, el.getAttribute('data-section') || 'both');
   });
+
+  // Atualiza widget de sitemap na aba Global
+  if (document.getElementById('sitemap-info-box')) setTimeout(loadSitemapInfo, 400);
 }
 
 function switchContentTab(tab) {
@@ -1486,4 +1498,41 @@ async function delSelectedMedia() {
 
   if (fail === 0) toast(ok + ' imagem(ns) excluída(s)!');
   else toast(ok + ' excluídas, ' + fail + ' com erro.', 'error');
+}
+
+/* ══ SITEMAP ══════════════════════════════════════════════ */
+async function loadSitemapInfo() {
+  const box = document.getElementById('sitemap-info-box');
+  if (!box) return;
+  box.innerHTML = '<span style="color:var(--text-mut);font-size:.8rem">Carregando...</span>';
+
+  const r = await api('GET', '/sitemap/info');
+  if (!r.ok) { box.innerHTML = '<span style="color:var(--danger);font-size:.8rem">API offline — sitemap estático em uso.</span>'; return; }
+
+  const d = r.data;
+  box.innerHTML =
+    '<div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center">' +
+    '<div><span style="font-size:1.5rem;font-weight:700;color:var(--primary-light)">' + d.total_urls + '</span><div style="font-size:.72rem;color:var(--text-mut)">URLs no sitemap</div></div>' +
+    '<div><span style="font-size:1.5rem;font-weight:700;color:var(--secondary)">' + d.posts_count + '</span><div style="font-size:.72rem;color:var(--text-mut)">Posts incluídos</div></div>' +
+    '<div style="margin-left:auto;display:flex;gap:.5rem">' +
+    '<a href="/api/sitemap.xml" target="_blank" class="btn btn-outline btn-sm">Ver sitemap</a>' +
+    '<button class="btn btn-secondary btn-sm" onclick="downloadSitemap()">Baixar .xml</button>' +
+    '</div></div>' +
+    (d.posts_count > 0
+      ? '<div style="margin-top:.75rem;font-size:.75rem;color:var(--text-mut)">Últimos posts: ' +
+        d.posts.slice(0,3).map(p => '<a href="/post.html?id='+p.id+'" target="_blank" style="color:var(--secondary)">'+EJ.esc(p.title.substring(0,30))+'</a>').join(', ') +
+        '</div>'
+      : '');
+}
+
+async function downloadSitemap() {
+  const r = await fetch((window.EJ_CFG?.API || '/api') + '/sitemap.xml');
+  if (!r.ok) { toast('Sitemap não disponível (API offline)', 'error'); return; }
+  const xml  = await r.text();
+  const blob = new Blob([xml], {type:'application/xml'});
+  const a    = document.createElement('a');
+  a.href     = URL.createObjectURL(blob);
+  a.download = 'sitemap.xml';
+  a.click();
+  toast('sitemap.xml baixado! Suba para a raiz do site via FTP.');
 }
