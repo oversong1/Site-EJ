@@ -266,10 +266,21 @@
     <section id="sec-media" class="adm-section">
       <div class="adm-head">
         <div><h2 style="font-size:1.4rem;margin-bottom:.2rem">Imagens / Mídia</h2><p class="text-muted" style="font-size:.82rem">Upload e gestão de todas as imagens do site</p></div>
-        <label class="btn btn-primary" style="cursor:pointer">
-          <svg class="icon icon-sm"><use href="#i-upload"/></svg> Upload
-          <input type="file" accept="image/*" style="display:none" multiple onchange="handleGlobalUpload(this)">
-        </label>
+        <div style="display:flex;gap:.6rem;align-items:center;flex-wrap:wrap">
+          <!-- Barra de seleção múltipla -->
+          <div id="media-select-bar" style="display:none;align-items:center;gap:.5rem">
+            <span id="media-select-count" style="font-size:.82rem;color:var(--text-mut)">0 selecionadas</span>
+            <button class="btn btn-danger btn-sm" onclick="delSelectedMedia()">Excluir selecionadas</button>
+            <button class="btn btn-outline btn-sm" onclick="clearMediaSelection()">Cancelar</button>
+          </div>
+          <button id="media-select-btn" class="btn btn-outline btn-sm" onclick="toggleMediaSelectMode()">
+            <svg class="icon icon-sm"><use href="#i-check"/></svg> Selecionar
+          </button>
+          <label class="btn btn-primary" style="cursor:pointer">
+            <svg class="icon icon-sm"><use href="#i-upload"/></svg> Upload
+            <input type="file" accept="image/*" style="display:none" multiple onchange="handleGlobalUpload(this)">
+          </label>
+        </div>
       </div>
       <div class="card mb-3">
         <div class="img-zone" id="drop-zone">
@@ -610,10 +621,10 @@
   </div>
 </div>
 
-<script src="js/icons.js?v=46"></script>
-<script src="js/data.js?v=46"></script>
-<script src="js/config.js?v=46"></script>
-<script src="js/admin.js?v=46"></script>
+<script src="js/icons.js?v=47"></script>
+<script src="js/data.js?v=47"></script>
+<script src="js/config.js?v=47"></script>
+<script src="js/admin.js?v=47"></script>
 <!-- Modal: Escolher imagem da galeria -->
 <div id="image-picker-modal" class="modal-overlay" style="display:none;z-index:3000" onclick="if(event.target===this)closeImagePicker()">
   <div class="modal-box" style="max-width:700px;width:95%">

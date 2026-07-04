@@ -17,17 +17,17 @@ const PAGE_SECTIONS = [
 
 
   { tab:'Home', section:'O que fazemos',  key:'home_services_title', label:'Título da seção',            type:'text',     default:'Nossas Soluções',                   where:'home: título da grade de serviços' },
-  { tab:'Home', section:'O que fazemos',  key:'home_services_sub',   label:'Subtítulo da seção',          type:'textarea', default:'Do sistema mais simples ao mais complexo — tecnologia que resolve o problema certo.', where:'home: texto abaixo do título' },
+  { tab:'Home', section:'O que fazemos',  key:'home_services_sub',   label:'Subtítulo da seção',          type:'textarea', default:'Do sistema mais simples ao mais complexo - tecnologia que resolve o problema certo.', where:'home: texto abaixo do título' },
   { tab:'Home', section:'Metodologia',    key:'home_method_title',   label:'Título da seção',            type:'text',     default:'Do problema à solução em 4 passos', where:'home: título da metodologia' },
-  { tab:'Home', section:'Metodologia',    key:'home_step1_title',    label:'Passo 1 — Título',               type:'text',     default:'1. Diagnóstico',                  where:'home: título passo 1' },
-  { tab:'Home', section:'Metodologia',    key:'home_step1_desc',     label:'Passo 1 — Descrição',        type:'textarea', default:'Entendemos a dor, o objetivo e o que precisa existir para resolver de verdade.', where:'home: descrição passo 1' },
-  { tab:'Home', section:'Metodologia',    key:'home_step2_title',    label:'Passo 2 — Título',               type:'text',     default:'2. Proposta',                         where:'home: título passo 2' },
-  { tab:'Home', section:'Metodologia',    key:'home_step2_desc',     label:'Passo 2 — Descrição',        type:'textarea', default:'Escopo fechado, prazo e valor definidos antes de começar. Sem surpresa.', where:'home: descrição passo 2' },
-  { tab:'Home', section:'Metodologia',    key:'home_step3_title',    label:'Passo 3 — Título',               type:'text',     default:'3. Desenvolvimento',                  where:'home: título passo 3' },
-  { tab:'Home', section:'Metodologia',    key:'home_step3_desc',     label:'Passo 3 — Descrição',        type:'textarea', default:'Entregas semanais com CI/CD. Você acompanha o progresso o tempo todo.', where:'home: descrição passo 3' },
-  { tab:'Home', section:'Metodologia',    key:'home_step4_title',    label:'Passo 4 — Título',               type:'text',     default:'4. Entrega',                          where:'home: título passo 4' },
-  { tab:'Home', section:'Metodologia',    key:'home_step4_desc',     label:'Passo 4 — Descrição',        type:'textarea', default:'Treinamento, documentação e suporte inclusos. Não sumimos depois de entregar.', where:'home: descrição passo 4' },
-  { tab:'Home', section:'A Equipe',       key:'home_about_title',    label:'Título da seção',            type:'text',     default:'Dev + PM — uma combinação rara', where:'home: título da seção Sobre' },
+  { tab:'Home', section:'Metodologia',    key:'home_step1_title',    label:'Passo 1 - Título',               type:'text',     default:'1. Diagnóstico',                  where:'home: título passo 1' },
+  { tab:'Home', section:'Metodologia',    key:'home_step1_desc',     label:'Passo 1 - Descrição',        type:'textarea', default:'Entendemos a dor, o objetivo e o que precisa existir para resolver de verdade.', where:'home: descrição passo 1' },
+  { tab:'Home', section:'Metodologia',    key:'home_step2_title',    label:'Passo 2 - Título',               type:'text',     default:'2. Proposta',                         where:'home: título passo 2' },
+  { tab:'Home', section:'Metodologia',    key:'home_step2_desc',     label:'Passo 2 - Descrição',        type:'textarea', default:'Escopo fechado, prazo e valor definidos antes de começar. Sem surpresa.', where:'home: descrição passo 2' },
+  { tab:'Home', section:'Metodologia',    key:'home_step3_title',    label:'Passo 3 - Título',               type:'text',     default:'3. Desenvolvimento',                  where:'home: título passo 3' },
+  { tab:'Home', section:'Metodologia',    key:'home_step3_desc',     label:'Passo 3 - Descrição',        type:'textarea', default:'Entregas semanais com CI/CD. Você acompanha o progresso o tempo todo.', where:'home: descrição passo 3' },
+  { tab:'Home', section:'Metodologia',    key:'home_step4_title',    label:'Passo 4 - Título',               type:'text',     default:'4. Entrega',                          where:'home: título passo 4' },
+  { tab:'Home', section:'Metodologia',    key:'home_step4_desc',     label:'Passo 4 - Descrição',        type:'textarea', default:'Treinamento, documentação e suporte inclusos. Não sumimos depois de entregar.', where:'home: descrição passo 4' },
+  { tab:'Home', section:'A Equipe',       key:'home_about_title',    label:'Título da seção',            type:'text',     default:'Dev + PM - uma combinação rara', where:'home: título da seção Sobre' },
   { tab:'Home', section:'A Equipe',       key:'home_about_sub',      label:'Subtítulo da seção',          type:'textarea', default:'Cada projeto tem um desenvolvedor que entende negócio e um PM que entende tecnologia.', where:'home: texto abaixo do título' },
   { tab:'Home', section:'Stack', key:'stack_items', label:'Tecnologias (uma por linha)', type:'textarea', default:'PHP / PHP com Laravel|React / React Native|Python / FastAPI / Django|Java com Spring Boot|MySQL - SQL Server|Docker - CI/CD|N8N - Automacoes|WordPress - WooCommerce|IA / LLMs - Chatbots', hint:'Uma tecnologia por linha (usa Enter). Aparecem como chips na Home.', where:'home: secao Stack' },
   { tab:'Home', section:'CTA Final', key:'home_cta_title', label:'Titulo do CTA', type:'text', default:'Tem um problema que a tecnologia pode resolver?', where:'home: titulo do CTA final' },
@@ -218,14 +218,14 @@ async function saveBanner(e){
   if(!d.title||!d.subtitle){toast('Título e subtítulo obrigatórios.','error');return;}
   const imgFile=f['b-image-file'].files[0];
   if(imgFile){
-    // Novo arquivo selecionado — faz upload
+    // Novo arquivo selecionado - faz upload
     const url=await uploadImage(imgFile,'banner');
     if(url)d.image_url=url;
   } else if(f['b-image-url'].value.trim()){
     // Mantém URL existente (não trocou nem removeu)
     d.image_url=f['b-image-url'].value.trim();
   } else {
-    // Sem arquivo e sem URL — imagem foi removida ou não existe
+    // Sem arquivo e sem URL - imagem foi removida ou não existe
     d.image_url='';
   }
   const res=id?await api('PUT','/banners/'+id,d):await api('POST','/banners',d);
@@ -461,18 +461,18 @@ function loadContentSection() {
       html += '<div id="content-cards-section" data-section="both"></div>';
     }
     if (tab === 'Servicos') {
-      html += '<div style="background:rgba(0,217,255,.06);border-left:3px solid var(--secondary);border-radius:4px;padding:.6rem .9rem;margin-bottom:1rem;font-size:.82rem;color:var(--secondary)">ℹ️ Cards com "Home + Página de Serviços" aparecem aqui E na Home. Cards de seções específicas aparecem apenas nesta página.</div>';
+      html += '<div style="background:rgba(0,217,255,.06);border-left:3px solid var(--secondary);border-radius:4px;padding:.6rem .9rem;margin-bottom:1rem;font-size:.82rem;color:var(--secondary)">i️ Cards com "Home + Página de Serviços" aparecem aqui E na Home. Cards de seções específicas aparecem apenas nesta página.</div>';
       // Cards para cada seção
       var sectionLabels = [
         {id:'content-cards-section-serv',  section:'both',        label:'Cards na Home + Serviços', hint:'Aparecem na Home e no topo de Serviços'},
-        {id:'content-cards-section-sis',   section:'sistemas',    label:'Cards — Sistemas Web',      hint:'Aparecem na seção Sistemas de Serviços'},
-        {id:'content-cards-section-sit',   section:'sites',       label:'Cards — Sites e E-commerce',hint:'Aparecem na seção Sites de Serviços'},
-        {id:'content-cards-section-api',   section:'apis',        label:'Cards — APIs e Integrações', hint:'Aparecem na seção APIs de Serviços'},
-        {id:'content-cards-section-aut',   section:'automacoes',  label:'Cards — Automações',         hint:'Aparecem na seção Automações de Serviços'},
-        {id:'content-cards-section-dev',   section:'devops',      label:'Cards — DevOps',             hint:'Aparecem na seção DevOps de Serviços'},
+        {id:'content-cards-section-sis',   section:'sistemas',    label:'Cards - Sistemas Web',      hint:'Aparecem na seção Sistemas de Serviços'},
+        {id:'content-cards-section-sit',   section:'sites',       label:'Cards - Sites e E-commerce',hint:'Aparecem na seção Sites de Serviços'},
+        {id:'content-cards-section-api',   section:'apis',        label:'Cards - APIs e Integrações', hint:'Aparecem na seção APIs de Serviços'},
+        {id:'content-cards-section-aut',   section:'automacoes',  label:'Cards - Automações',         hint:'Aparecem na seção Automações de Serviços'},
+        {id:'content-cards-section-dev',   section:'devops',      label:'Cards - DevOps',             hint:'Aparecem na seção DevOps de Serviços'},
       ];
       sectionLabels.forEach(function(s) {
-        html += '<div style="margin-bottom:1rem"><div style="font-size:.78rem;font-weight:600;color:var(--primary-light);padding:.4rem .75rem;background:rgba(108,99,255,.08);border-radius:4px 4px 0 0;border:1px solid rgba(108,99,255,.2)">' + s.label + ' <span style="font-weight:400;color:var(--text-mut)">— ' + s.hint + '</span></div>';
+        html += '<div style="margin-bottom:1rem"><div style="font-size:.78rem;font-weight:600;color:var(--primary-light);padding:.4rem .75rem;background:rgba(108,99,255,.08);border-radius:4px 4px 0 0;border:1px solid rgba(108,99,255,.2)">' + s.label + ' <span style="font-weight:400;color:var(--text-mut)">- ' + s.hint + '</span></div>';
         html += '<div id="' + s.id + '" data-section="' + s.section + '" style="border:1px solid rgba(108,99,255,.2);border-top:none;border-radius:0 0 4px 4px"></div></div>';
       });
     }
@@ -483,7 +483,7 @@ function loadContentSection() {
   container.innerHTML = html;
 
   // Carrega cards na aba Home
-  // Carrega cards para todos os containers — lê data-section de cada elemento
+  // Carrega cards para todos os containers - lê data-section de cada elemento
   ['content-cards-section','content-cards-section-serv','content-cards-section-sis','content-cards-section-sit','content-cards-section-api','content-cards-section-aut','content-cards-section-dev'].forEach(function(id) {
     var el = document.getElementById(id);
     if (el) loadContentCards(el, el.getAttribute('data-section') || 'both');
@@ -519,7 +519,7 @@ const CARD_ICONS_EMOJI = [
   {e:'🏆',l:'Resultado'},{e:'✅',l:'Entrega'},{e:'📝',l:'Conteúdo'},{e:'🔔',l:'Alertas'},
 ];
 
-// Ícones SVG sóbrios (sprite icons.js — preto/branco via CSS)
+// Ícones SVG sóbrios (sprite icons.js - preto/branco via CSS)
 const CARD_ICONS_SVG = [
   {id:'i-systems',l:'Sistemas'},{id:'i-web',l:'Web/Sites'},{id:'i-mobile',l:'Mobile'},{id:'i-api',l:'API'},
   {id:'i-automation',l:'Automação'},{id:'i-chatbot',l:'Chatbot/IA'},{id:'i-devops',l:'DevOps'},{id:'i-consulting',l:'Consultoria'},
@@ -653,7 +653,7 @@ async function saveAllContent() {
   if (res.ok) {
     toast('Conteúdo salvo! Atualize o site (Ctrl+Shift+R) para ver as mudanças.');
   } else {
-    toast('Salvo localmente — altere quando o Docker estiver rodando para persistir no banco.');
+    toast('Salvo localmente - altere quando o Docker estiver rodando para persistir no banco.');
   }
 }
 
@@ -707,10 +707,10 @@ async function saveTeamMember(key){
   } else if (p?._localSrc) {
     const src = p._localSrc;
     if (src.startsWith('http')) {
-      // URL real — salva direto
+      // URL real - salva direto
       payload.photo_url = src;
     } else if (src.startsWith('data:')) {
-      // Base64 — converte para arquivo e faz upload
+      // Base64 - converte para arquivo e faz upload
       try {
         const res = await fetch(src);
         const blob = await res.blob();
@@ -814,7 +814,7 @@ async function loadMediaGrid(){
         + '</div>'
       : '<div style="font-size:.68rem;color:var(--text-mut);padding:.2rem .5rem">Não usada no site</div>';
 
-    var html = '<div class="media-item" style="position:relative;border:1px solid '+(inUse?'rgba(16,185,129,.3)':'rgba(239,68,68,.15)')+';">';
+    var html = '<div class="media-item" data-media-id="'+id+'" style="position:relative;border:1px solid '+(inUse?'rgba(16,185,129,.3)':'rgba(239,68,68,.15)')+';">'; 
     html += '<div style="position:relative">';
     html += '<img src="'+m.url+'" loading="lazy" onerror="this.style.opacity=.3" style="width:100%;height:110px;object-fit:cover">';
     html += useBadge;
@@ -839,6 +839,14 @@ async function loadMediaGrid(){
 
   // Event delegation
   grid.onclick = function(e) {
+    // Modo seleção múltipla: clique no item seleciona/deseleciona
+    if (_mediaSelectMode) {
+      var item = e.target.closest('.media-item');
+      if (item && item.dataset.mediaId) {
+        _toggleMediaItem(item.dataset.mediaId, item);
+        return;
+      }
+    }
     var delBtn = e.target.closest('[data-del-id]');
     if (delBtn) { delMedia(delBtn.getAttribute('data-del-id')); return; }
     var editBtn = e.target.closest('[data-edit-id]');
@@ -900,7 +908,7 @@ async function delMedia(id){
   const secPosts = document.getElementById('sec-posts');
   if (secPosts && secPosts.classList.contains('active')) loadPostsTable();
 
-  toast('Imagem excluída — banners e posts que a usavam foram atualizados.');
+  toast('Imagem excluída - banners e posts que a usavam foram atualizados.');
 }
 
 /* ══ USUÁRIOS (admin only) ════════════════════════════════ */
@@ -925,7 +933,7 @@ async function loadUsersTable(){
         + ' <span style="font-size:.65rem;background:rgba(108,99,255,.15);color:var(--primary-light);padding:.1rem .5rem;border-radius:3px">Você</span></td>'
       +'<td style="color:var(--text-sec)">' + EJ.esc(myEmail) + '</td>'
       +'<td><span class="badge badge-primary">' + EJ.esc(myRole) + '</span></td>'
-      +'<td style="color:var(--text-mut);font-size:.82rem">—</td>'
+      +'<td style="color:var(--text-mut);font-size:.82rem">-</td>'
       +'<td><button class="btn btn-sm btn-outline" onclick="openUserModal(-1)">Editar minha conta</button></td>'
       +'</tr>'
       +'<tr><td colspan="5" style="text-align:center;padding:1.25rem">'
@@ -1009,7 +1017,7 @@ async function saveUser(e){
     // Criar novo usuário
     res = await api('POST','/users',d);
   } else if(String(id)==='-1'){
-    // Editar minha conta — busca meu ID real da lista de usuários
+    // Editar minha conta - busca meu ID real da lista de usuários
     const myEmail = localStorage.getItem('ej_email')||'';
     const usersR = await api('GET','/users');
     const me = (usersR.data.data||usersR.data||[]).find(u=>u.email===myEmail);
@@ -1113,7 +1121,7 @@ function applyColors(){
     Object.entries(saved).forEach(([v, val]) => preview.style.setProperty(v, val));
   }
 
-  // Salva no banco e localStorage — o SITE carregará ao recarregar
+  // Salva no banco e localStorage - o SITE carregará ao recarregar
   localStorage.setItem('ej_colors', JSON.stringify(saved));
   api('PUT', '/settings', {group:'colors', values:saved}).then(() => {
     toast('Cores salvas! Recarregue o site para ver as mudanças.');
@@ -1152,7 +1160,7 @@ async function loadSavedColors(){
   const local = JSON.parse(localStorage.getItem('ej_colors') || '{}');
   const s = Object.keys(apiVals).some(k => k.startsWith('--')) ? apiVals : local;
 
-  // Só preenche os inputs — NÃO altera o visual do admin
+  // Só preenche os inputs - NÃO altera o visual do admin
   Object.entries(COLOR_MAP).forEach(([v, id]) => {
     const val = s[v]; if (!val) return;
     const el = document.getElementById(id); if(el) el.value = val;
@@ -1183,7 +1191,7 @@ async function uploadImage(file, context='general') {
     saveMediaItem({ url: res.data.url, name: file.name, size: file.size });
     return res.data.url;
   }
-  // Offline: base64 persiste — blob URL morre quando fecha o modal
+  // Offline: base64 persiste - blob URL morre quando fecha o modal
   return new Promise(resolve => {
     const reader = new FileReader();
     reader.onload = e => {
@@ -1330,7 +1338,7 @@ async function loadMailConfig() {
   });
   // Senha: não preenche por segurança, só indica se existe
   const pwEl = document.getElementById('mail-password');
-  if (pwEl && s.mail_password) pwEl.placeholder = '••••••• (salva — deixe em branco para manter)';
+  if (pwEl && s.mail_password) pwEl.placeholder = '••••••• (salva - deixe em branco para manter)';
 }
 
 async function saveMailConfig() {
@@ -1363,4 +1371,119 @@ async function testSmtp() {
     resultEl.textContent = r.ok ? '✅ ' + r.data.message : '❌ ' + (r.data?.message || 'Erro ao enviar');
     resultEl.style.color = r.ok ? 'var(--success)' : 'var(--danger)';
   }
+}
+
+/* ══ MULTI-SELEÇÃO DE MÍDIA ═══════════════════════════════ */
+let _mediaSelectMode = false;
+let _mediaSelected   = new Set(); // IDs selecionados
+
+function toggleMediaSelectMode() {
+  _mediaSelectMode = !_mediaSelectMode;
+  _mediaSelected.clear();
+
+  const btn  = document.getElementById('media-select-btn');
+  const bar  = document.getElementById('media-select-bar');
+  const grid = document.getElementById('media-grid');
+
+  if (_mediaSelectMode) {
+    if (btn) { btn.style.background='var(--primary)'; btn.style.color='#fff'; }
+    if (bar) bar.style.display='flex';
+    // Adiciona visual de selecionável em cada item
+    if (grid) {
+      grid.querySelectorAll('.media-item').forEach(function(item) {
+        item.style.cursor = 'pointer';
+        item.classList.add('media-selectable');
+      });
+    }
+  } else {
+    clearMediaSelection();
+  }
+  _updateSelectCount();
+}
+
+function clearMediaSelection() {
+  _mediaSelectMode = false;
+  _mediaSelected.clear();
+  const btn = document.getElementById('media-select-btn');
+  const bar = document.getElementById('media-select-bar');
+  if (btn) { btn.style.background=''; btn.style.color=''; }
+  if (bar) bar.style.display='none';
+  // Remove visual de seleção
+  document.querySelectorAll('.media-item').forEach(function(item) {
+    item.classList.remove('media-selectable','media-selected');
+    item.style.cursor = '';
+    var chk = item.querySelector('.media-check');
+    if (chk) chk.remove();
+  });
+  _updateSelectCount();
+}
+
+function _toggleMediaItem(id, itemEl) {
+  if (!_mediaSelectMode) return;
+  if (_mediaSelected.has(id)) {
+    _mediaSelected.delete(id);
+    itemEl.classList.remove('media-selected');
+    var chk = itemEl.querySelector('.media-check');
+    if (chk) chk.remove();
+  } else {
+    _mediaSelected.add(id);
+    itemEl.classList.add('media-selected');
+    if (!itemEl.querySelector('.media-check')) {
+      var ck = document.createElement('div');
+      ck.className = 'media-check';
+      ck.style = 'position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(108,99,255,.35);display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2';
+      ck.innerHTML = '<svg style="width:32px;height:32px;fill:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5))"><use href="#i-check"/></svg>';
+      itemEl.querySelector('div').appendChild(ck);
+    }
+  }
+  _updateSelectCount();
+}
+
+function _updateSelectCount() {
+  var cnt = document.getElementById('media-select-count');
+  if (cnt) cnt.textContent = _mediaSelected.size + ' selecionada' + (_mediaSelected.size !== 1 ? 's' : '');
+  var btn = document.querySelector('[onclick="delSelectedMedia()"]');
+  if (btn) btn.disabled = _mediaSelected.size === 0;
+}
+
+async function delSelectedMedia() {
+  var n = _mediaSelected.size;
+  if (n === 0) return;
+  if (!confirm('Excluir ' + n + ' imagem(ns) selecionada(s)?\n\nElas serão removidas também dos banners e posts que as usarem.')) return;
+
+  var btn = document.querySelector('[onclick="delSelectedMedia()"]');
+  if (btn) { btn.disabled = true; btn.textContent = 'Excluindo...'; }
+
+  var ids = Array.from(_mediaSelected);
+  var ok = 0, fail = 0;
+
+  for (var id of ids) {
+    // Reusa a lógica de cascade do delMedia existente
+    try {
+      const list = EJ._read('ej_media');
+      const item = list.find(m=>String(m.id)===String(id));
+      const deletedUrl = item ? item.url : null;
+
+      if (deletedUrl) {
+        // Cascade banners
+        const banners = EJ.getBanners();
+        for (const b of banners) {
+          if (b.image_url === deletedUrl) await api('PUT','/banners/'+b.id,{image_url:''});
+        }
+        // Cascade posts
+        for (const p of (_cachedPosts.length?_cachedPosts:EJ.getPosts())) {
+          if (p.image_url === deletedUrl) await api('PUT','/posts/'+p.id,{image_url:''});
+        }
+      }
+
+      const r = await api('DELETE','/media/'+id);
+      if (r.ok) ok++; else fail++;
+    } catch(e) { fail++; }
+  }
+
+  clearMediaSelection();
+  await loadMediaGrid();
+
+  if (fail === 0) toast(ok + ' imagem(ns) excluída(s)!');
+  else toast(ok + ' excluídas, ' + fail + ' com erro.', 'error');
 }
