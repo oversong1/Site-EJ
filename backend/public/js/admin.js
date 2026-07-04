@@ -206,6 +206,37 @@ async function loadDash() {
 }
 
 
+function openBannerModal(id=null){
+  const m=document.getElementById('banner-modal'),f=document.getElementById('banner-form');
+  if(!m||!f)return;
+  f.reset();f['bid'].value='';
+  document.getElementById('banner-modal-title').textContent='Novo Banner';
+  const img=document.getElementById('banner-img-preview');if(img)img.src='';
+  if(id){
+    document.getElementById('banner-modal-title').textContent='Editar Banner';
+    f['bid'].value=id;
+    const b=_cachedBanners.find(x=>x.id==id);
+    if(b){
+      f['b-title'].value=b.title||'';
+      f['b-subtitle'].value=b.subtitle||'';
+      f['b-image-url'].value=b.image_url||'';
+      if(b.image_url&&img){img.src=b.image_url;img.classList.add('show');}
+      f['b-layout'].value=b.layout||'bg';
+      f['b-cta-txt'].value=b.cta_text||'';
+      f['b-cta-lnk'].value=b.cta_link||'';
+      f['b-cta2-txt'].value=b.cta2_text||'';
+      f['b-cta2-lnk'].value=b.cta2_link||'';
+      const stats=Array.isArray(b.stats)?b.stats:[];
+      for(let i=1;i<=3;i++){
+        const s=stats[i-1]||{};
+        const vEl=f['b-stat'+i+'-val'];const lEl=f['b-stat'+i+'-lbl'];
+        if(vEl)vEl.value=s.val||'';if(lEl)lEl.value=s.lbl||'';
+      }
+    }
+  }
+  m.classList.add('open');
+}
+
 async function saveBanner(e){
   e.preventDefault();const f=e.target,id=f['bid'].value;
   // Monta stats (tags de tecnologia) a partir dos campos do modal
@@ -514,6 +545,18 @@ function switchContentTab(tab) {
     btn.style.fontWeight = isActive ? '700' : '400';
     panel.style.display  = isActive ? 'block' : 'none';
   });
+  // Ao abrir aba Serviços, garante que todos os card-sections carreguem
+  if (tab === 'Servicos') {
+    setTimeout(function() {
+      ['content-cards-section-serv','content-cards-section-sis','content-cards-section-sit',
+       'content-cards-section-api','content-cards-section-aut','content-cards-section-dev'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el && el.querySelectorAll('[style*="surface2"]').length === 0) {
+          loadContentCards(el, el.getAttribute('data-section') || 'both');
+        }
+      });
+    }, 100);
+  }
 }
 
 
