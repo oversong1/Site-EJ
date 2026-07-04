@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="theme-color" content="#6C63FF">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin — EJ Tecnologia</title>
+  <!-- Fontes (mais rápido que @import no CSS) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="adm-body">
+
+<!-- ══ LOGIN ══════════════════════════════════════════════ -->
+<div id="adm-login" class="adm-login" style="display:none">
+  <div class="adm-login-card">
+    <div style="text-align:center;margin-bottom:2rem">
+      <a href="index.html" class="logo" style="justify-content:center;margin-bottom:1.25rem">
+        <div class="logo-icon">EJ</div><span class="logo-text">EJ Tecnologia</span>
+      </a>
+      <h2 style="font-size:1.35rem;margin-bottom:.3rem">Painel Administrativo</h2>
+      <p class="text-muted" style="font-size:.875rem">Entre com e-mail e senha para continuar</p>
+    </div>
+    <form id="login-form">
+      <div class="form-group">
+        <label class="form-label">E-mail</label>
+        <input type="email" id="adm-email" class="form-control" placeholder="admin@ejtecnologia.com.br" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Senha</label>
+        <input type="password" id="adm-pw" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+      </div>
+      <div id="login-error" style="color:var(--danger);font-size:.82rem;margin-bottom:.75rem;display:none"></div>
+      <button type="submit" class="btn btn-primary btn-full btn-lg mt-2">Entrar</button>
+    </form>
+    <div style="text-align:center;margin-top:1.5rem">
+      <a href="index.html" style="font-size:.82rem;color:var(--text-mut)">← Voltar ao site</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DASHBOARD ══════════════════════════════════════════ -->
+<div id="adm-dash" class="adm-layout" style="display:none">
+
+  <!-- SIDEBAR -->
+  <aside class="adm-sidebar">
+    <div class="adm-logo">
+      <a href="index.html" class="logo">
+        <div class="logo-icon" style="width:28px;height:28px;font-size:.75rem">EJ</div>
+        <span class="logo-text" style="font-size:1rem">Admin</span>
+      </a>
+    </div>
+    <div id="adm-user-badge" style="background:rgba(108,99,255,.1);border-radius:var(--radius-sm);padding:.5rem .75rem;margin-bottom:1.5rem;font-size:.78rem;color:var(--text-sec)">
+      Olá, <strong id="adm-user-name">—</strong><br>
+      <span id="adm-user-role" style="color:var(--primary-light)">—</span>
+    </div>
+    <nav>
+      <div class="adm-nav-item active" data-sec="overview">
+        <svg class="icon icon-sm"><use href="#i-dashboard"/></svg> Dashboard
+      </div>
+      <div class="adm-nav-item" data-sec="banners">
+        <svg class="icon icon-sm"><use href="#i-slides"/></svg> Banners / Slider
+      </div>
+      <div class="adm-nav-item" data-sec="posts">
+        <svg class="icon icon-sm"><use href="#i-post"/></svg> Blog Posts
+      </div>
+      <div class="adm-nav-item" data-sec="team">
+        <svg class="icon icon-sm"><use href="#i-team"/></svg> Equipe
+      </div>
+
+      <div class="adm-nav-item" data-sec="content">
+        <svg class="icon icon-sm"><use href="#i-palette"/></svg> Conteúdo das Páginas
+      </div>
+      <div class="adm-nav-item" data-sec="colors">
+        <svg class="icon icon-sm"><use href="#i-palette"/></svg> Cores e Estilo
+      </div>
+      <div class="adm-nav-item" data-sec="media">
+        <svg class="icon icon-sm"><use href="#i-image"/></svg> Imagens / Mídia
+      </div>
+      <div class="adm-nav-item adm-admin-only" data-sec="email" id="nav-email">
+        <svg class="icon icon-sm"><use href="#i-email"/></svg> E-mail / SMTP
+        <span style="font-size:.65rem;background:rgba(108,99,255,.2);color:var(--primary-light);padding:.1rem .4rem;border-radius:4px;margin-left:.4rem">Admin</span>
+      </div>
+      <!-- Visível apenas para admin -->
+      <div class="adm-nav-item adm-admin-only" data-sec="users" id="nav-users">
+        <svg class="icon icon-sm"><use href="#i-team"/></svg> Usuários
+        <span style="font-size:.65rem;background:rgba(108,99,255,.2);color:var(--primary-light);padding:.1rem .4rem;border-radius:4px;margin-left:.4rem">Admin</span>
+      </div>
+    </nav>
+    <div style="margin-top:3rem;border-top:1px solid var(--border-light);padding-top:1.25rem">
+      <a href="index.html" target="_blank" class="adm-nav-item">
+        <svg class="icon icon-sm"><use href="#i-ext"/></svg> Ver site
+      </a>
+      <div class="adm-nav-item" onclick="clearLocalCache()" style="color:var(--warning);font-size:.8rem;cursor:pointer">
+        <svg class="icon icon-sm"><use href="#i-settings"/></svg> Limpar Cache Local
+      </div>
+      <div class="adm-nav-item" id="btn-logout" style="color:var(--danger)">
+        <svg class="icon icon-sm"><use href="#i-logout"/></svg> Sair
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="adm-main">
+
+    <!-- OVERVIEW -->
+    <section id="sec-overview" class="adm-section active">
+      <div class="adm-head">
+        <div><h2 style="font-size:1.4rem;margin-bottom:.2rem">Dashboard</h2><p class="text-muted" style="font-size:.82rem">Visão geral</p></div>
+        <a href="index.html" target="_blank" class="btn btn-secondary btn-sm"><svg class="icon icon-sm"><use href="#i-ext"/></svg> Ver site</a>
+      </div>
+      <div class="adm-cards">
+        <div class="adm-kpi"><div class="adm-kpi-val" id="dash-banners">—</div><div class="adm-kpi-lbl">Banners ativos</div></div>
+        <div class="adm-kpi"><div class="adm-kpi-val" id="dash-posts">—</div><div class="adm-kpi-lbl">Posts publicados</div></div>
+        <div class="adm-kpi"><div class="adm-kpi-val adm-admin-only" id="dash-users">—</div><div class="adm-kpi-lbl adm-admin-only">Usuários</div></div>
+        <div class="adm-kpi"><div class="adm-kpi-val" id="dash-media">—</div><div class="adm-kpi-lbl">Imagens</div></div>
+      </div>
+      <div class="card"><h3 style="font-size:1rem;margin-bottom:1rem">Posts recentes</h3><div id="dash-recent"></div></div>
+    </section>
+
+    <!-- BANNERS -->
+    <section id="sec-banners" class="adm-section">
+      <div class="adm-head">
+        <div><h2 style="font-size:1.4rem;margin-bottom:.2rem">Banners / Slider</h2><p class="text-muted" style="font-size:.82rem">Slides do hero da home — título, imagem e botões</p></div>
+        <button class="btn btn-primary" id="btn-new-banner"><svg class="icon icon-sm"><use href="#i-slides"/></svg> Novo Banner</button>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="adm-table"><thead><tr><th>Título / Subtítulo</th><th>Imagem</th><th>Botão</th><th>Status</th><th>Ações</th></tr></thead>
+        <tbody id="banners-tbody"><tr><td colspan="5" style="text-align:center;color:var(--text-mut);padding:2rem">Carregando...</td></tr></tbody></table>
+      </div>
+    </section>
+
+    <!-- POSTS -->
+    <section id="sec-posts" class="adm-section">
+      <div class="adm-head">
+        <div><h2 style="font-size:1.4rem;margin-bottom:.2rem">Blog Posts</h2><p class="text-muted" style="font-size:.82rem">Artigos do blog com imagem de capa e HTML</p></div>
+        <button class="btn btn-primary" id="btn-new-post"><svg class="icon icon-sm"><use href="#i-post"/></svg> Novo Post</button>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="adm-table"><thead><tr><th>Título</th><th>Categoria</th><th>Capa</th><th>Data</th><th>Ações</th></tr></thead>
+        <tbody id="posts-tbody"><tr><td colspan="5" style="text-align:center;color:var(--text-mut);padding:2rem">Carregando...</td></tr></tbody></table>
+      </div>
+    </section>
+
+    <!-- EQUIPE -->
+    <section id="sec-team" class="adm-section">
+      <div class="adm-head"><div><h2 style="font-size:1.4rem;margin-bottom:.2rem">Equipe</h2><p class="text-muted" style="font-size:.82rem">Fotos e bios dos sócios</p></div></div>
+      <div class="grid-2" id="team-cards">
+        <div class="card">
+          <h3 style="font-size:1rem;margin-bottom:1rem;color:var(--primary-light)">Emerson Souza</h3>
+          <div class="form-group"><label class="form-label">Foto</label>
+            <div style="display:flex;align-items:center;gap:1rem;margin-bottom:.5rem">
+              <div class="team-photo" id="prev-emerson" style="width:64px;height:64px;flex-shrink:0"><svg class="svc-svg" style="width:28px;height:28px;opacity:.4"><use href="#i-user"/></svg></div>
+              <div class="img-zone" style="flex:1;padding:.75rem"><input type="file" id="upload-emerson" accept="image/*" onchange="previewTeamPhoto(this,'prev-emerson')">
+                <svg class="icon" style="margin:0 auto .3rem"><use href="#i-upload"/></svg><div style="font-size:.78rem;color:var(--text-mut)">Clique para trocar a foto</div></div>
+            </div>
+          </div>
+          <div class="form-group"><label class="form-label">Nome</label><input id="name-emerson" class="form-control" type="text" value="Emerson Souza"></div>
+          <div class="form-group"><label class="form-label">Cargo</label><input id="role-emerson" class="form-control" type="text" placeholder="ex: Desenvolvedor Full-Stack · CTO"></div>
+          <div class="form-group"><label class="form-label">Bio</label><textarea id="bio-emerson" class="form-control" rows="3" placeholder="Texto de apresentação..."></textarea></div>
+          <div class="form-group"><label class="form-label">Tags <span style="font-size:.75rem;color:var(--text-mut)">(separadas por vírgula)</span></label><input id="tags-emerson" class="form-control" type="text" placeholder="PHP, Laravel, React, Python"></div>
+          <div class="form-group"><label class="form-label">LinkedIn URL</label><input id="linkedin-emerson" class="form-control" type="text" placeholder="https://linkedin.com/in/..."></div>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1rem;margin-bottom:1rem;color:var(--primary-light)">Julio Cesar Souza Leal</h3>
+          <div class="form-group"><label class="form-label">Foto</label>
+            <div style="display:flex;align-items:center;gap:1rem;margin-bottom:.5rem">
+              <div class="team-photo" id="prev-julio" style="width:64px;height:64px;flex-shrink:0"><svg class="svc-svg" style="width:28px;height:28px;opacity:.4"><use href="#i-user"/></svg></div>
+              <div class="img-zone" style="flex:1;padding:.75rem"><input type="file" id="upload-julio" accept="image/*" onchange="previewTeamPhoto(this,'prev-julio')">
+                <svg class="icon" style="margin:0 auto .3rem"><use href="#i-upload"/></svg><div style="font-size:.78rem;color:var(--text-mut)">Clique para trocar a foto</div></div>
+            </div>
+          </div>
+          <div class="form-group"><label class="form-label">Nome</label><input id="name-julio" class="form-control" type="text" value="Julio Cesar Souza Leal"></div>
+          <div class="form-group"><label class="form-label">Cargo</label><input id="role-julio" class="form-control" type="text" placeholder="ex: Product Manager · COO"></div>
+          <div class="form-group"><label class="form-label">Bio</label><textarea id="bio-julio" class="form-control" rows="3" placeholder="Texto de apresentação..."></textarea></div>
+          <div class="form-group"><label class="form-label">Tags <span style="font-size:.75rem;color:var(--text-mut)">(separadas por vírgula)</span></label><input id="tags-julio" class="form-control" type="text" placeholder="Gestão de Produto, Scrum, Roadmap"></div>
+          <div class="form-group"><label class="form-label">LinkedIn URL</label><input id="linkedin-julio" class="form-control" type="text" placeholder="https://linkedin.com/in/..."></div>
+        </div>
+      </div>
+      <div style="margin-top:1.5rem;text-align:right">
+        <button class="btn btn-primary" onclick="saveAllTeam()">Salvar Equipe</button>
+      </div>
+    </section>
+
+    <!-- CONTEÚDO DAS PÁGINAS -->
+    <section id="sec-content" class="adm-section">
+      <div class="adm-head">
+        <div><h2 style="font-size:1.4rem;margin-bottom:.2rem">Conteúdo das Páginas</h2><p class="text-muted" style="font-size:.82rem">Edite textos, títulos e descrições de cada seção do site</p></div>
+        <button class="btn btn-primary btn-sm" onclick="saveAllContent()"><svg class="icon icon-sm"><use href="#i-check"/></svg> Salvar tudo</button>
+      </div>
+      <div class="card mb-3" style="background:rgba(108,99,255,.06);border-color:rgba(108,99,255,.2)">
+        <p style="font-size:.845rem;color:var(--text-mut)">Edite os textos abaixo e clique em <strong style="color:var(--text)">Salvar tudo</strong>. Os valores são aplicados no site via API — enquanto o Docker não estiver rodando, os textos padrão do HTML são exibidos.</p>
+      </div>
+      <div id="content-sections"></div>
+    </section>
+
+    <!-- CORES -->
+    <section id="sec-colors" class="adm-section">
+      <div class="adm-head">
+        <div><h2 style="font-size:1.4rem;margin-bottom:.2rem">Cores e Estilo</h2><p class="text-muted" style="font-size:.82rem">Personalize a identidade visual do site</p></div>
+        <div style="display:flex;gap:.75rem">
+          <button class="btn btn-secondary btn-sm" onclick="resetColors()">Restaurar padrão</button>
+          <button class="btn btn-primary btn-sm" onclick="applyColors()"><svg class="icon icon-sm"><use href="#i-check"/></svg> Aplicar</button>
+        </div>
+      </div>
+      <!-- Identidade Visual -->
+      <div style="margin-bottom:.5rem;font-size:.78rem;font-weight:700;color:var(--primary-light);text-transform:uppercase;letter-spacing:.08em">✨ Identidade Visual</div>
+      <div class="color-grid" style="margin-bottom:1.5rem">
+        <div class="color-item"><span>Cor primária (botões, destaques)</span><input type="color" id="c-primary" value="#6C63FF"></div>
+        <div class="color-item"><span>Primária clara (hover, links)</span><input type="color" id="c-primary-light" value="#8B83FF"></div>
+        <div class="color-item"><span>Cor secundária (ciano)</span><input type="color" id="c-secondary" value="#00D9FF"></div>
+        <div class="color-item"><span>Acento / destaque</span><input type="color" id="c-accent" value="#FF6B6B"></div>
+        <div class="color-item"><span>Cor de sucesso</span><input type="color" id="c-success" value="#10B981"></div>
+        <div class="color-item"><span>Aviso (warning)</span><input type="color" id="c-warning" value="#F59E0B"></div>
+        <div class="color-item"><span>Botão WhatsApp</span><input type="color" id="c-wpp" value="#25D366"></div>
+      </div>
+      <!-- Fundos -->
+      <div style="margin-bottom:.5rem;font-size:.78rem;font-weight:700;color:var(--primary-light);text-transform:uppercase;letter-spacing:.08em">🎨 Fundos e Superfícies</div>
+      <div class="color-grid" style="margin-bottom:1.5rem">
+        <div class="color-item"><span>Fundo principal</span><input type="color" id="c-bg" value="#0F0F1A"></div>
+        <div class="color-item"><span>Fundo de cards (surface)</span><input type="color" id="c-surface" value="#1A1A2E"></div>
+        <div class="color-item"><span>Fundo secundário (surface2)</span><input type="color" id="c-surface2" value="#16213E"></div>
+        <div class="color-item"><span>Fundo terciário (surface3)</span><input type="color" id="c-surface3" value="#0D1117"></div>
+      </div>
+      <!-- Textos -->
+      <div style="margin-bottom:.5rem;font-size:.78rem;font-weight:700;color:var(--primary-light);text-transform:uppercase;letter-spacing:.08em">📝 Textos</div>
+      <div class="color-grid" style="margin-bottom:1.5rem">
+        <div class="color-item"><span>Cor do texto principal</span><input type="color" id="c-text" value="#F0F0FF"></div>
+        <div class="color-item"><span>Texto secundário</span><input type="color" id="c-text-sec" value="#B0B8D0"></div>
+        <div class="color-item"><span>Texto esmaecido</span><input type="color" id="c-text-mut" value="#707890"></div>
+      </div>
+      <!-- Bordas e raios -->
+      <div style="margin-bottom:.5rem;font-size:.78rem;font-weight:700;color:var(--primary-light);text-transform:uppercase;letter-spacing:.08em">📌 Bordas e Arredondamento</div>
+      <div class="color-grid" style="margin-bottom:1.5rem">
+        <div class="color-item">
+          <span>Raio padrão (cards)</span>
+          <div style="display:flex;align-items:center;gap:.5rem">
+            <input type="range" id="c-radius" min="0" max="32" value="12" style="flex:1" oninput="document.getElementById('c-radius-val').textContent=this.value+'px'">
+            <span id="c-radius-val" style="font-size:.8rem;color:var(--text-mut);min-width:36px">12px</span>
+          </div>
+        </div>
+        <div class="color-item">
+          <span>Raio grande (seções)</span>
+          <div style="display:flex;align-items:center;gap:.5rem">
+            <input type="range" id="c-radius-lg" min="0" max="48" value="18" style="flex:1" oninput="document.getElementById('c-radius-lg-val').textContent=this.value+'px'">
+            <span id="c-radius-lg-val" style="font-size:.8rem;color:var(--text-mut);min-width:36px">18px</span>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3" id="color-preview-box">
+        <h3 style="font-size:1rem;margin-bottom:.3rem">Pré-visualização <span style="font-size:.75rem;color:var(--text-mut);font-weight:400">— mostra como ficará o site após salvar</span></h3>
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;align-items:center">
+          <button class="btn btn-primary">Botão primário</button>
+          <button class="btn btn-secondary">Botão secundário</button>
+          <button class="btn btn-whatsapp"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0;display:inline-block;vertical-align:middle"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg> WhatsApp</button>
+          <span class="badge badge-primary">Tag primária</span>
+          <span class="badge badge-cyan">Tag cyan</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MÍDIA -->
+    <section id="sec-media" class="adm-section">
+      <div class="adm-head">
+        <div><h2 style="font-size:1.4rem;margin-bottom:.2rem">Imagens / Mídia</h2><p class="text-muted" style="font-size:.82rem">Upload e gestão de todas as imagens do site</p></div>
+        <div style="display:flex;gap:.6rem;align-items:center;flex-wrap:wrap">
+          <!-- Barra de seleção múltipla -->
+          <div id="media-select-bar" style="display:none;align-items:center;gap:.5rem">
+            <span id="media-select-count" style="font-size:.82rem;color:var(--text-mut)">0 selecionadas</span>
+            <button class="btn btn-danger btn-sm" onclick="delSelectedMedia()">Excluir selecionadas</button>
+            <button class="btn btn-outline btn-sm" onclick="clearMediaSelection()">Cancelar</button>
+          </div>
+          <button id="media-select-btn" class="btn btn-outline btn-sm" onclick="toggleMediaSelectMode()">
+            <svg class="icon icon-sm"><use href="#i-check"/></svg> Selecionar
+          </button>
+          <label class="btn btn-primary" style="cursor:pointer">
+            <svg class="icon icon-sm"><use href="#i-upload"/></svg> Upload
+            <input type="file" accept="image/*" style="display:none" multiple onchange="handleGlobalUpload(this)">
+          </label>
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="img-zone" id="drop-zone">
+          <input type="file" accept="image/*" multiple onchange="handleGlobalUpload(this)">
+          <svg class="icon icon-lg" style="margin:0 auto .75rem;opacity:.4"><use href="#i-upload"/></svg>
+          <p style="font-size:.875rem;color:var(--text-mut)">Arraste imagens ou clique para selecionar</p>
+          <p style="font-size:.75rem;color:var(--text-mut)">JPG, PNG, WebP — máx. 5MB</p>
+        </div>
+      </div>
+      <div class="media-grid" id="media-grid"><div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-mut)">Nenhuma imagem ainda.</div></div>
+    </section>
+
+    <!-- USUÁRIOS (admin only) -->
+    <section id="sec-users" class="adm-section adm-admin-only">
+      <div class="adm-head">
+        <div>
+          <h2 style="font-size:1.4rem;margin-bottom:.2rem">Usuários</h2>
+          <p class="text-muted" style="font-size:.82rem">Gerencie quem pode acessar o painel — somente <strong style="color:var(--primary-light)">admin</strong> pode fazer isso</p>
+        </div>
+        <button class="btn btn-primary" id="btn-new-user"><svg class="icon icon-sm"><use href="#i-team"/></svg> Novo Usuário</button>
+      </div>
+      <div class="card mb-3" style="background:rgba(245,158,11,.06);border-color:rgba(245,158,11,.3)">
+        <p style="font-size:.845rem;color:var(--text-mut)">
+          <strong style="color:var(--warning)">Roles:</strong>
+          <strong style="color:var(--text)">admin</strong> — acesso total ao painel inclusive a esta seção. &nbsp;|&nbsp;
+          <strong style="color:var(--text)">colaborador</strong> — pode editar conteúdo (banners, posts, equipe, imagens, cores) mas <em>não cria usuários nem muda níveis de acesso</em>.
+        </p>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <table class="adm-table">
+          <thead><tr><th>Nome</th><th>E-mail</th><th>Nível</th><th>Criado em</th><th>Ações</th></tr></thead>
+          <tbody id="users-tbody"><tr><td colspan="5" style="text-align:center;color:var(--text-mut);padding:2rem">Carregando...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- E-MAIL / SMTP -->
+    <section id="sec-email" class="adm-section adm-admin-only">
+      <div class="adm-head">
+        <div><h2 style="font-size:1.4rem;margin-bottom:.2rem">Configurações de E-mail</h2><p class="text-muted" style="font-size:.82rem">SMTP para o formulário de contato do site</p></div>
+        <div style="display:flex;gap:.75rem">
+          <button class="btn btn-secondary btn-sm" onclick="testSmtp()"><svg class="icon icon-sm"><use href="#i-email"/></svg> Enviar teste</button>
+          <button class="btn btn-primary btn-sm" onclick="saveMailConfig()"><svg class="icon icon-sm"><use href="#i-check"/></svg> Salvar</button>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="font-size:.95rem;color:var(--primary-light);margin-bottom:1.25rem">Servidor SMTP</h3>
+          <div class="form-group">
+            <label class="form-label">Provedor rápido</label>
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.5rem">
+              <button type="button" class="btn btn-outline btn-sm" onclick="setSmtpPreset('gmail')">Gmail</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="setSmtpPreset('outlook')">Outlook</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="setSmtpPreset('yahoo')">Yahoo</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="setSmtpPreset('hostinger')">Hostinger</button>
+              <button type="button" class="btn btn-outline btn-sm" onclick="setSmtpPreset('custom')">Personalizado</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Servidor SMTP</label>
+            <input id="mail-host" class="form-control" type="text" placeholder="smtp.gmail.com">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+            <div class="form-group">
+              <label class="form-label">Porta</label>
+              <input id="mail-port" class="form-control" type="number" placeholder="587">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Encriptação</label>
+              <select id="mail-encryption" class="form-control">
+                <option value="tls">TLS (porta 587)</option>
+                <option value="ssl">SSL (porta 465)</option>
+                <option value="">Nenhuma</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Usuário SMTP</label>
+            <input id="mail-username" class="form-control" type="text" placeholder="seuemail@gmail.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Senha / App Password
+              <a href="https://myaccount.google.com/apppasswords" target="_blank" style="font-size:.75rem;color:var(--secondary);font-weight:400;margin-left:.4rem">gerar para Gmail</a>
+            </label>
+            <div style="position:relative">
+              <input id="mail-password" class="form-control" type="password" placeholder="••••••••" style="padding-right:2.5rem">
+              <button type="button" onclick="var i=document.getElementById('mail-password');i.type=i.type==='password'?'text':'password'" style="position:absolute;right:.5rem;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-mut)">👁</button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3 style="font-size:.95rem;color:var(--primary-light);margin-bottom:1.25rem">Remetente e Destinatários</h3>
+          <div class="form-group">
+            <label class="form-label">Nome do remetente</label>
+            <input id="mail-from-name" class="form-control" type="text" placeholder="EJ Tecnologia">
+          </div>
+          <div class="form-group">
+            <label class="form-label">E-mail do remetente <span style="font-size:.75rem;color:var(--text-mut)">(igual ao usuário SMTP)</span></label>
+            <input id="mail-from-email" class="form-control" type="email" placeholder="seuemail@gmail.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Destinatários <span style="font-size:.75rem;color:var(--text-mut)">(vários separados por vírgula)</span></label>
+            <textarea id="mail-to-emails" class="form-control" rows="3" placeholder="emerson@ejtecnologia.com.br, julio@ejtecnologia.com.br"></textarea>
+            <p style="font-size:.75rem;color:var(--text-mut);margin-top:.4rem">📨 Todos receberão os contatos do site.</p>
+          </div>
+          <div style="background:rgba(0,217,255,.06);border:1px solid rgba(0,217,255,.2);border-radius:var(--radius-sm);padding:1rem;margin-top:1rem">
+            <p style="font-size:.82rem;color:var(--secondary);margin:0 0 .5rem;font-weight:600">🧪 Testar configurações</p>
+            <p style="font-size:.78rem;color:var(--text-mut);margin:0 0 .6rem">Salve primeiro, depois teste:</p>
+            <div style="display:flex;gap:.5rem">
+              <input id="mail-test-to" class="form-control" type="email" placeholder="seu@email.com" style="flex:1">
+              <button class="btn btn-secondary btn-sm" onclick="testSmtp()">Testar</button>
+            </div>
+            <p id="mail-test-result" style="font-size:.78rem;margin:.5rem 0 0"></p>
+          </div>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <h3 style="font-size:.875rem;margin-bottom:.75rem">📖 Como configurar o Gmail (mais fácil)</h3>
+        <ol style="font-size:.82rem;color:var(--text-sec);line-height:1.8;margin:0;padding-left:1.25rem">
+          <li>Google Account → Segurança → <strong>Verificação em 2 etapas</strong> (ativar)</li>
+          <li>Pesquise <strong>"Senhas de app"</strong> → Criar para "Outro app" → nome: EJ Site</li>
+          <li>Copie a senha de 16 dígitos e cole no campo Senha acima</li>
+          <li>Servidor: <code>smtp.gmail.com</code> / Porta: <code>587</code> / TLS</li>
+        </ol>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ══ MODAL — BANNER ═════════════════════════════════════ -->
+<div id="banner-modal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="banner-modal-title">Novo Banner</h3><button class="modal-close" onclick="document.getElementById('banner-modal').classList.remove('open')">✕</button></div>
+    <form id="banner-form">
+      <input type="hidden" name="bid">
+      <div class="form-group"><label class="form-label">Título *</label><input type="text" name="b-title" class="form-control" required></div>
+      <div class="form-group"><label class="form-label">Subtítulo *</label><textarea name="b-subtitle" class="form-control" rows="3" required></textarea></div>
+      <div class="form-group">
+        <label class="form-label">Imagem de fundo <span style="color:var(--text-mut);font-size:.75rem">(opcional)</span></label>
+        <!-- Imagem atual (aparece só no modo edição) -->
+        <div id="banner-img-status" style="display:none;align-items:center;gap:1rem;background:rgba(108,99,255,.08);border:1px solid rgba(108,99,255,.2);border-radius:var(--radius);padding:.75rem;margin-bottom:.75rem">
+          <img class="img-status-thumb" style="width:60px;height:40px;object-fit:cover;border-radius:6px" alt="">
+          <div style="flex:1;font-size:.82rem;color:var(--text-sec)">Imagem atual (salva)</div>
+          <button type="button" class="btn btn-sm btn-danger" onclick="removeBannerImage()">Remover imagem</button>
+        </div>
+        <div class="img-zone"><input type="file" name="b-image-file" accept="image/*" onchange="previewImg(this,'banner-img-preview');">
+          <svg class="icon" style="margin:0 auto .4rem;opacity:.5"><use href="#i-image"/></svg><div style="font-size:.78rem;color:var(--text-mut)">Clique para selecionar</div></div>
+        <img id="banner-img-preview" class="img-preview" alt="Preview">
+        <div style="display:flex;gap:.5rem;margin-top:.4rem;flex-wrap:wrap">
+          <input type="text" name="b-image-url" class="form-control" style="flex:1;min-width:0" placeholder="ou cole URL de imagem externa">
+          <button type="button" class="btn btn-sm btn-outline" onclick="openImagePicker('banner')" title="Escolher da galeria">&#128247; Galeria</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Posição da Imagem</label>
+        <select name="b-layout" class="form-control">
+          <option value="background">Fundo (imagem ocupa o slide inteiro)</option>
+          <option value="right">Texto à esquerda, imagem à direita</option>
+          <option value="left">Imagem à esquerda, texto à direita</option>
+        </select>
+        <p class="form-hint">Layout "direita/esquerda" funciona melhor com imagens JPG/PNG em alta qualidade.</p>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Texto Botão 1</label><input type="text" name="b-cta-txt" class="form-control" placeholder="Falar no WhatsApp"></div>
+      <!-- Stats/Tags de tecnologia (por banner) -->
+      <div class="form-group" style="background:rgba(108,99,255,.06);border:1px solid rgba(108,99,255,.2);border-radius:var(--radius);padding:1rem;margin-top:.5rem">
+        <label class="form-label" style="color:var(--primary-light)">Tags de Tecnologia (abaixo dos botões)</label>
+        <p style="font-size:.75rem;color:var(--text-mut);margin-bottom:.75rem">Aparecem como destaque no slide. Deixe em branco para ocultar.</p>
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:.4rem .6rem;align-items:center">
+          <label style="font-size:.78rem;color:var(--text-mut)">Tag 1 — Valor</label>
+          <input type="text" name="b-stat1-val" class="form-control" placeholder="ex: PHP">
+          <label style="font-size:.78rem;color:var(--text-mut)">Tag 1 — Label</label>
+          <input type="text" name="b-stat1-lbl" class="form-control" placeholder="ex: Laravel · Python · React">
+          <label style="font-size:.78rem;color:var(--text-mut)">Tag 2 — Valor</label>
+          <input type="text" name="b-stat2-val" class="form-control" placeholder="ex: CI/CD">
+          <label style="font-size:.78rem;color:var(--text-mut)">Tag 2 — Label</label>
+          <input type="text" name="b-stat2-lbl" class="form-control" placeholder="ex: Entregas contínuas">
+          <label style="font-size:.78rem;color:var(--text-mut)">Tag 3 — Valor</label>
+          <input type="text" name="b-stat3-val" class="form-control" placeholder="ex: IA">
+          <label style="font-size:.78rem;color:var(--text-mut)">Tag 3 — Label</label>
+          <input type="text" name="b-stat3-lbl" class="form-control" placeholder="ex: Driven development">
+        </div>
+      </div>
+        <div class="form-group"><label class="form-label">Link Botão 1</label><input type="text" name="b-cta-lnk" class="form-control" placeholder="https://wa.me/55..."></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Texto Botão 2</label><input type="text" name="b-cta2-txt" class="form-control"></div>
+        <div class="form-group"><label class="form-label">Link Botão 2</label><input type="text" name="b-cta2-lnk" class="form-control" placeholder="servicos.html"></div>
+      </div>
+      <div class="form-group" style="display:flex;align-items:center;gap:.75rem">
+        <input type="checkbox" name="b-active" id="b-active-chk" style="width:18px;height:18px;accent-color:var(--primary)">
+        <label for="b-active-chk" class="form-label" style="margin:0;cursor:pointer">Banner ativo (visível no site)</label>
+      </div>
+      <div style="display:flex;gap:1rem;justify-content:flex-end;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border-light)">
+        <button type="button" class="btn btn-secondary" onclick="document.getElementById('banner-modal').classList.remove('open')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ══ MODAL — POST ════════════════════════════════════════ -->
+<div id="post-modal" class="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="post-modal-title">Novo Post</h3><button class="modal-close" onclick="document.getElementById('post-modal').classList.remove('open')">✕</button></div>
+    <form id="post-form">
+      <input type="hidden" name="pid">
+      <div class="form-group"><label class="form-label">Título *</label><input type="text" name="p-title" class="form-control" required></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Categoria</label>
+          <select name="p-cat" class="form-control"><option>Sistemas</option><option>SaaS</option><option>ERP</option><option>Automação</option><option>DevOps</option><option>APIs</option><option>Chatbots</option><option>IA</option><option>Mobile</option><option>Sites</option><option>Negócios</option></select>
+        </div>
+        <div class="form-group"><label class="form-label">Tempo de leitura</label><input type="text" name="p-read" class="form-control" placeholder="5 min"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Resumo</label><textarea name="p-excerpt" class="form-control" rows="2"></textarea></div>
+      <div class="form-group">
+        <label class="form-label">Imagem de capa</label>
+        <div class="img-zone"><input type="file" name="p-image-file" accept="image/*" onchange="previewImg(this,'post-img-preview')">
+          <svg class="icon" style="margin:0 auto .4rem;opacity:.5"><use href="#i-image"/></svg><div style="font-size:.78rem;color:var(--text-mut)">Clique para selecionar</div></div>
+        <img id="post-img-preview" class="img-preview" alt="Preview">
+        <div style="display:flex;gap:.5rem;margin-top:.4rem;flex-wrap:wrap">
+          <input type="text" name="p-image-url" class="form-control" style="flex:1;min-width:0" placeholder="ou cole URL da imagem">
+          <button type="button" class="btn btn-sm btn-outline" onclick="openImagePicker('post')" title="Escolher da galeria">&#128247; Galeria</button>
+          <button type="button" class="btn btn-sm btn-danger" onclick="removePostImage()" title="Remover imagem">&#10005; Remover</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Conteúdo *</label>
+        <!-- Abas Visual / HTML -->
+        <div style="display:flex;gap:0;margin-bottom:.5rem;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border)">
+          <button type="button" id="editor-tab-visual" onclick="switchEditorTab('visual')" style="flex:1;padding:.4rem .75rem;background:var(--primary);color:#fff;border:none;cursor:pointer;font-size:.8rem;font-weight:600">Visual</button>
+          <button type="button" id="editor-tab-html" onclick="switchEditorTab('html')" style="flex:1;padding:.4rem .75rem;background:var(--bg-card);color:var(--text-mut);border:none;cursor:pointer;font-size:.8rem">HTML</button>
+        </div>
+        <!-- Editor Visual (contenteditable) -->
+        <div id="post-editor-toolbar" style="display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.4rem;padding:.4rem;background:var(--bg-dark);border:1px solid var(--border);border-radius:var(--radius-sm)">
+          <button type="button" onclick="efmt('bold')" title="Negrito" style="padding:.2rem .5rem;background:var(--bg-card);color:var(--text);border:1px solid var(--border);border-radius:4px;cursor:pointer;font-weight:700">B</button>
+          <button type="button" onclick="efmt('italic')" title="Itálico" style="padding:.2rem .5rem;background:var(--bg-card);color:var(--text);border:1px solid var(--border);border-radius:4px;cursor:pointer;font-style:italic">I</button>
+          <button type="button" onclick="efmt('h2')" title="Título grande" style="padding:.2rem .5rem;background:var(--bg-card);color:var(--text);border:1px solid var(--border);border-radius:4px;cursor:pointer;font-size:.78rem">H2</button>
+          <button type="button" onclick="efmt('h3')" title="Título médio" style="padding:.2rem .5rem;background:var(--bg-card);color:var(--text);border:1px solid var(--border);border-radius:4px;cursor:pointer;font-size:.78rem">H3</button>
+          <button type="button" onclick="efmt('ul')" title="Lista" style="padding:.2rem .5rem;background:var(--bg-card);color:var(--text);border:1px solid var(--border);border-radius:4px;cursor:pointer">&#8226; Lista</button>
+          <button type="button" onclick="efmt('link')" title="Link" style="padding:.2rem .5rem;background:var(--bg-card);color:var(--text);border:1px solid var(--border);border-radius:4px;cursor:pointer">&#128279; Link</button>
+          <button type="button" onclick="efmt('removeFormat')" title="Limpar formatação" style="padding:.2rem .5rem;background:var(--bg-card);color:var(--text-mut);border:1px solid var(--border);border-radius:4px;cursor:pointer;font-size:.78rem">Limpar</button>
+        </div>
+        <div id="post-editor-visual" contenteditable="true" style="display:block;min-height:260px;max-height:420px;overflow-y:auto;padding:.75rem;background:var(--bg-dark);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);line-height:1.7;font-size:.9rem;outline:none" oninput="syncEditorToTextarea()"></div>
+        <!-- Textarea HTML (oculta por padrão) -->
+        <textarea name="p-content" id="post-editor-html" class="form-control" rows="12" required style="display:none"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Autor</label><input type="text" name="p-author" class="form-control" value="Emerson Souza"></div>
+        <div class="form-group"><label class="form-label">Cor do card</label><input type="color" name="p-color" class="form-control" style="height:46px;padding:.3rem" value="#6C63FF"><p class="form-hint">Cor do thumbnail no blog</p></div>
+      </div>
+      <div style="display:flex;gap:1rem;justify-content:flex-end;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border-light)">
+        <button type="button" class="btn btn-secondary" onclick="document.getElementById('post-modal').classList.remove('open')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Publicar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ══ MODAL — CARD DE SERVIÇO ════════════════════════════ -->
+<div id="card-modal" class="modal-overlay">
+  <div class="modal-box" style="max-width:560px">
+    <div class="modal-head"><h3 id="card-modal-title">Novo Card</h3><button class="modal-close" onclick="document.getElementById('card-modal').classList.remove('open')">x</button></div>
+    <form id="card-form">
+      <input type="hidden" name="cid">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">\uD83D\uDCA1 Ícone do Card</label>
+          <div style="display:flex;align-items:center;gap:.5rem">
+            <input type="text" name="c-icon" id="c-icon-input" class="form-control" style="width:64px;text-align:center;font-size:1.5rem" maxlength="4" readonly placeholder="?">
+            <button type="button" class="btn btn-outline btn-sm" onclick="toggleIconPicker()" style="white-space:nowrap">📷 Escolher</button>
+          </div>
+          <div id="icon-picker-panel" style="display:none;background:var(--bg-dark);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem;margin-top:.5rem">
+            <p style="font-size:.72rem;color:var(--text-mut);margin-bottom:.5rem">Clique para selecionar o ícone:</p>
+            <div id="icon-picker-grid" style="display:flex;flex-wrap:wrap;gap:.25rem"></div>
+          </div>
+        </div>
+        <div class="form-group"><label class="form-label">Ordem</label><input type="number" name="c-order" class="form-control" value="0" min="0"></div>
+        <div class="form-group">
+          <label class="form-label">Onde aparece</label>
+          <select name="c-section" class="form-control">
+            <option value="both">Home + Página de Serviços</option>
+            <option value="home">Somente na Home</option>
+            <option value="sistemas">Somente em Serviços — Sistemas</option>
+            <option value="sites">Somente em Serviços — Sites</option>
+            <option value="apis">Somente em Serviços — APIs</option>
+            <option value="automacoes">Somente em Serviços — Automações</option>
+            <option value="devops">Somente em Serviços — DevOps</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label class="form-label">Titulo *</label><input type="text" name="c-title" class="form-control" required></div>
+      <div class="form-group"><label class="form-label">Descricao *</label><textarea name="c-desc" class="form-control" rows="4" required></textarea></div>
+      <div class="form-group"><label class="form-label">Tags (separadas por virgula)</label><input type="text" name="c-tags" class="form-control" placeholder="PHP, PHP com Laravel, React"></div>
+      <div class="form-group" style="display:flex;align-items:center;gap:.75rem">
+        <input type="checkbox" name="c-active" id="c-active-chk" style="width:18px;height:18px;accent-color:var(--primary)">
+        <label for="c-active-chk" class="form-label" style="margin:0;cursor:pointer">Card ativo (visivel no site)</label>
+      </div>
+      <div style="display:flex;gap:1rem;justify-content:flex-end;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border-light)">
+        <button type="button" class="btn btn-secondary" onclick="document.getElementById('card-modal').classList.remove('open')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- ══ MODAL — USUÁRIO ════════════════════════════════════ -->
+<div id="user-modal" class="modal-overlay">
+  <div class="modal-box" style="max-width:480px">
+    <div class="modal-head"><h3 id="user-modal-title">Novo Usuário</h3><button class="modal-close" onclick="document.getElementById('user-modal').classList.remove('open')">✕</button></div>
+    <form id="user-form">
+      <input type="hidden" name="uid">
+      <div class="form-group"><label class="form-label">Nome *</label><input type="text" name="u-name" class="form-control" required></div>
+      <div class="form-group"><label class="form-label">E-mail *</label><input type="email" name="u-email" class="form-control" required></div>
+      <div class="form-group">
+        <label class="form-label">Nível de acesso</label>
+        <select name="u-role" class="form-control">
+          <option value="admin">admin — acesso total</option>
+          <option value="colaborador">colaborador — só conteúdo</option>
+        </select>
+        <p class="form-hint">Colaborador NÃO pode criar usuários nem alterar níveis de acesso.</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Senha <span id="pw-optional-lbl" style="color:var(--text-mut);font-size:.75rem">(deixe em branco para manter a atual)</span></label>
+        <input type="password" name="u-pw" id="u-pw" class="form-control" placeholder="Mín. 8 chars, maiúscula, minúscula, especial" autocomplete="new-password">
+        <div id="pw-strength" style="font-size:.75rem;margin-top:.4rem"></div>
+      </div>
+      <div class="form-group" id="pw-confirm-wrap">
+        <label class="form-label">Confirmar senha</label>
+        <input type="password" name="u-pw-confirm" class="form-control" placeholder="Repita a senha" autocomplete="new-password">
+      </div>
+      <div id="user-form-error" style="color:var(--danger);font-size:.82rem;margin-bottom:.75rem;display:none"></div>
+      <div style="display:flex;gap:1rem;justify-content:flex-end;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border-light)">
+        <button type="button" class="btn btn-secondary" onclick="document.getElementById('user-modal').classList.remove('open')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="js/icons.js?v=48"></script>
+<script src="js/data.js?v=48"></script>
+<script src="js/config.js?v=48"></script>
+<script src="js/admin.js?v=48"></script>
+<!-- Modal: Escolher imagem da galeria -->
+<div id="image-picker-modal" class="modal-overlay" style="display:none;z-index:3000" onclick="if(event.target===this)closeImagePicker()">
+  <div class="modal-box" style="max-width:700px;width:95%">
+    <div class="modal-header">
+      <h3 class="modal-title">Escolher imagem da galeria</h3>
+      <button type="button" class="modal-close" onclick="closeImagePicker()">&#10005;</button>
+    </div>
+    <div style="padding:1.25rem">
+      <p style="font-size:.82rem;color:var(--text-mut);margin-bottom:1rem">Clique em uma imagem para selecioná-la. Ou <label style="color:var(--primary-light);cursor:pointer"><input type="file" id="picker-upload-input" accept="image/*" style="display:none" onchange="pickerUploadAndSelect(this)">faça upload de uma nova imagem aqui</label>.</p>
+      <div id="image-picker-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.75rem;max-height:400px;overflow-y:auto"></div>
+      <p id="image-picker-empty" style="color:var(--text-mut);text-align:center;padding:2rem;display:none">Nenhuma imagem na galeria. Faça upload acima.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

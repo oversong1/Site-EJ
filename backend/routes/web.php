@@ -1,24 +1,28 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ServicosController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
-| EJ Tecnologia — Web Routes
-|--------------------------------------------------------------------------
-| As rotas da API estão em routes/api.php.
-| Deixe uma rota simples para confirmar que o Laravel está funcionando.
+| EJ Tecnologia — Web Routes (server-side rendering com Blade)
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return response()->json([
-        'app'    => 'EJ Tecnologia API',
-        'status' => 'online',
-        'docs'   => 'Use /api/* para as rotas da API.',
-    ]);
-});
+// Páginas públicas — PHP lê o banco e entrega HTML pronto
+Route::get('/',          [HomeController::class,     'index'])->name('home');
+Route::get('/servicos',  [ServicosController::class, 'index'])->name('servicos');
+Route::get('/blog',      [BlogController::class,     'index'])->name('blog');
+Route::get('/blog/{id}', [BlogController::class,     'show'])->name('post');
 
+// Admin panel — SPA em HTML/JS que usa a API
+Route::get('/admin', function () {
+    return response()->file(public_path('admin.html'));
+})->name('admin');
+
+// Health check
 Route::get('/up', function () {
-    return response()->json(['status' => 'ok', 'timestamp' => now()->toISOString()]);
+    return response()->json(['status' => 'ok']);
 });
