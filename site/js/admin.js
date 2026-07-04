@@ -1579,3 +1579,108 @@ async function downloadSitemap() {
   a.click();
   toast('sitemap.xml baixado! Suba para a raiz do site via FTP.');
 }
+
+/* ══ IMAGE PICKER (galeria) ═══════════════════════════════ */
+var _imagePickerContext = null; // 'banner' ou 'post'
+
+function openImagePicker(context) {
+  _imagePickerContext = context;
+  const modal = document.getElementById('image-picker-modal');
+  if (!modal) return;
+  modal.style.display = 'flex';
+  _loadImagePickerGrid();
+}
+
+function closeImagePicker() {
+  const modal = document.getElementById('image-picker-modal');
+  if (modal) modal.style.display = 'none';
+  _imagePickerContext = null;
+}
+
+async function _loadImagePickerGrid() {
+  const grid  = document.getElementById('image-picker-grid');
+  const empty = document.getElementById('image-picker-empty');
+  if (!grid) return;
+  grid.innerHTML = '<p style="color:var(--text-mut);text-align:center;padding:1rem">Carregando...</p>';
+
+  const r = await api('GET', '/media');
+  const list = r.ok && Array.isArray(r.data) ? r.data : EJ._read('ej_media');
+
+  if (!list.length) {
+    grid.innerHTML = '';
+    if (empty) empty.style.display = 'block';
+    return;
+  }
+  if (empty) empty.style.display = 'none';
+
+  grid.innerHTML = list.map(function(m) {
+    return '<div onclick="selectPickerImage(\'' + m.url + '\')" style="cursor:pointer;border-radius:6px;overflow:hidden;border:2px solid transparent;transition:.15s" onmouseover="this.style.borderColor=\'var(--primary)\'" onmouseout="this.style.borderColor=\'transparent\'">'
+      + '<img src="' + m.url + '" loading="lazy" onerror="this.style.opacity=.3" style="width:100%;height:90px;object-fit:cover">'
+      + '<div style="font-size:.65rem;color:var(--text-mut);padding:.2rem .3rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + EJ.esc((m.name||m.url).split('/').pop().substring(0,20)) + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+function selectPickerImage(url) {
+  if (_imagePickerContext === 'banner') {
+    const f = document.getElementById('banner-form');
+    if (f) {
+      f['b-image-url'].value = url;
+      const preview = document.getElementById('banner-img-preview');
+      if (preview) { preview.src = url; preview.classList.add('show'); }
+    }
+  } else if (_imagePickerContext === 'post') {
+    const urlEl = document.querySelector('[name="p-image-url"]');
+    if (urlEl) { urlEl.value = url; }
+    const preview = document.getElementById('post-img-preview');
+    if (preview) { preview.src = url; preview.classList.add('show'); }
+  }
+  closeImagePicker();
+  toast('Imagem selecionada!');
+}
+
+async function pickerUploadAndSelect(input) {
+  const f = input.files[0];
+  if (!f) return;
+  const url = await uploadImage(f, 'general');
+  if (url) {
+    saveMediaItem({ url, name: f.name, size: f.size });
+    selectPickerImage(url);
+  } else {
+    toast('Erro ao fazer upload.', 'error');
+  }
+}
+
+/* ══ REMOVE IMAGEM (banner e post) ═══════════════════════ */
+function removeBannerImage() {
+  const f = document.getElementById('banner-form');
+  if (!f) return;
+  f['b-image-url'].value = '';
+  const fileInput = f['b-image-file'];
+  if (fileInput) fileInput.value = '';
+  const preview = document.getElementById('banner-img-preview');
+  if (preview) { preview.src = ''; preview.classList.remove('show'); }
+  toast('Imagem removida.');
+}
+
+function removePostImage() {
+  const urlEl = document.querySelector('[name="p-image-url"]');
+  if (urlEl) urlEl.value = '';
+  const fileInput = document.querySelector('[name="p-image-file"]');
+  if (fileInput) fileInput.value = '';
+  const preview = document.getElementById('post-img-preview');
+  if (preview) { preview.src = ''; preview.classList.remove('show'); }
+  toast('Imagem do post removida.');
+}
+
+/* ══ LIMPAR CACHE LOCAL ════════════════════════════════════ */
+function clearLocalCache() {
+  if (!confirm('Limpar cache local? Os dados serão recarregados da API.')) return;
+  Object.keys(localStorage).filter(k => k.startsWith('ej_')).forEach(k => {
+    if (k !== 'ej_token' && k !== 'ej_role' && k !== 'ej_name' && k !== 'ej_email') {
+      localStorage.removeItem(k);
+    }
+  });
+  toast('Cache limpo! Recarregando...');
+  setTimeout(() => location.reload(), 800);
+}
