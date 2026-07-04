@@ -37,3 +37,4 @@ npm-debug.log*
 
 # Symlink do Laravel Storage (Windows)
 backend/public/storage
+CREDENCIAIS-SERVIDOR.md
