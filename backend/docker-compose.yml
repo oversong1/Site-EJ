@@ -1,0 +1,86 @@
+services:
+
+  # ── Nginx — serve frontend estático + proxy para Laravel
+  nginx:
+    image: nginx:1.25-alpine
+    container_name: ej_nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ../site:/usr/share/nginx/html
+      - ./storage/app/public:/var/www/storage
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - laravel
+    restart: unless-stopped
+    networks:
+      - ej_net
+
+  # ── Laravel PHP-FPM
+  laravel:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ej_laravel
+    volumes:
+      - ./:/var/www/app
+      - ./storage:/var/www/app/storage
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - ej_net
+
+  # ── MySQL 8
+  mysql:
+    image: mysql:8.0
+    container_name: ej_mysql
+    environment:
+      MYSQL_DATABASE: ej_tecnologia
+      MYSQL_USER: ej_user
+      MYSQL_PASSWORD: ej_password_2026
+      MYSQL_ROOT_PASSWORD: root_2026
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uej_user", "-pej_password_2026"]
+      interval: 10s
+      timeout: 5s
+      retries: 8
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - ej_net
+
+  # ── phpMyAdmin — UI para o banco
+  phpmyadmin:
+    image: phpmyadmin:5.2
+    container_name: ej_pma
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_USER: ej_user
+      PMA_PASSWORD: ej_password_2026
+      UPLOAD_LIMIT: 50M
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - ej_net
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  ej_net:
+    driver: bridge

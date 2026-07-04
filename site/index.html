@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Performance: preconnect, favicon, theme-color -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta name="theme-color" content="#6C63FF">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>EJ Tecnologia — Sistemas, Automações e Sites Sob Medida</title>
+  <meta name="description" content="Desenvolvemos sistemas SaaS, ERPs, automações, APIs, sites e aplicativos. Emerson Souza + Julio Cesar Leal.">
+  <!-- Open Graph / WhatsApp / LinkedIn -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://ejtecnologia.com.br/">
+  <meta property="og:title"       content="EJ Tecnologia — Sistemas, Automações e Sites Sob Medida">
+  <meta property="og:description" content="Desenvolvemos sistemas SaaS, ERPs, automações, APIs, sites e aplicativos. Emerson Souza + Julio Cesar Leal.">
+  <meta property="og:image"       content="https://ejtecnologia.com.br/og-image.png">
+  <meta property="og:locale"      content="pt_BR">
+  <meta property="og:site_name"   content="EJ Tecnologia">
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="EJ Tecnologia — Sistemas, Automações e Sites Sob Medida">
+  <meta name="twitter:description" content="Desenvolvemos sistemas SaaS, ERPs, automações, APIs, sites e aplicativos. Emerson Souza + Julio Cesar Leal.">
+  <meta name="twitter:image"       content="https://ejtecnologia.com.br/og-image.png">
+  <!-- Fontes (mais rápido que @import no CSS) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="css/style.css" as="style">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Google Analytics (substituir G-XXXXXXXXXX pelo seu ID) -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script> -->
+</head>
+<body>
+
+<!-- ── HEADER ────────────────────────────────────────────── -->
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">EJ</div>
+        <span class="logo-text">EJ Tecnologia</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html"   class="nav-link active">Home</a>
+        <a href="servicos.html"class="nav-link">Serviços</a>
+        <a href="blog.html"    class="nav-link">Blog</a>
+        <a href="#sobre"       class="nav-link">Sobre</a>
+        <a href="#contato"     class="nav-link">Contato</a>
+      </nav>
+      <div class="header-actions">
+        <a href="https://wa.me/5511999999999" data-s-wa="contact_whatsapp" class="btn btn-whatsapp btn-sm" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0;display:inline-block;vertical-align:middle"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg> WhatsApp
+        </a>
+      </div>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<nav class="mobile-nav">
+  <a href="index.html"    class="nav-link">Home</a>
+  <a href="servicos.html" class="nav-link">Serviços</a>
+  <a href="blog.html"     class="nav-link">Blog</a>
+  <a href="#sobre"        class="nav-link">Sobre</a>
+  <a href="#contato"      class="nav-link">Contato</a>
+  <a href="https://wa.me/5511999999999" data-s-wa="contact_whatsapp" class="btn btn-whatsapp" target="_blank">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0;display:inline-block;vertical-align:middle"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg> Falar no WhatsApp
+  </a>
+</nav>
+
+<!-- ── HERO SLIDER ───────────────────────────────────────── -->
+<section id="slider-wrap" class="hero-slider">
+  <div id="slider-slides"></div>
+  <div class="slider-controls" id="slider-dots"></div>
+  <div class="slider-arrows">
+    <button class="slider-arrow" id="btn-prev" aria-label="Anterior">&#8592;</button>
+    <button class="slider-arrow" id="btn-next" aria-label="Próximo">&#8594;</button>
+  </div>
+</section>
+
+<!-- ── SERVIÇOS ──────────────────────────────────────────── -->
+<section class="section" id="servicos">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">O que fazemos</span>
+      <h2 class="section-title" data-s="home_services_title">Nossas Soluções</h2>
+      <p class="section-subtitle" data-s="home_services_sub">Do sistema mais simples ao mais complexo — tecnologia que resolve o problema certo.</p>
+    </div>
+    <div class="services-grid" id="service-cards-grid">
+
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">
+          <svg class="svc-svg"><use href="#i-systems"/></svg>
+        </div>
+        <div class="service-title">Sistemas e SaaS</div>
+        <p class="service-desc">Plataformas web, CRM, ERP leve e portais de clientes — desenvolvidos em PHP com Laravel + React ou Blade.</p>
+        <div class="service-tags">
+          <span class="service-tag">PHP</span><span class="service-tag">PHP com Laravel</span><span class="service-tag">React</span><span class="service-tag">MySQL</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">
+          <svg class="svc-svg"><use href="#i-web"/></svg>
+        </div>
+        <div class="service-title">Sites e E-commerce</div>
+        <p class="service-desc">Sites institucionais, landing pages e lojas virtuais — em WordPress + PHP ou PHP puro, responsivos e otimizados para o Google.</p>
+        <div class="service-tags">
+          <span class="service-tag">WordPress</span><span class="service-tag">PHP</span><span class="service-tag">WooCommerce</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">
+          <svg class="svc-svg"><use href="#i-mobile"/></svg>
+        </div>
+        <div class="service-title">Aplicativos Mobile</div>
+        <p class="service-desc">Apps iOS e Android em React Native — uma base de código, duas plataformas, menor custo.</p>
+        <div class="service-tags">
+          <span class="service-tag">React Native</span><span class="service-tag">iOS</span><span class="service-tag">Android</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">
+          <svg class="svc-svg"><use href="#i-api"/></svg>
+        </div>
+        <div class="service-title">Integrações e APIs</div>
+        <p class="service-desc">Conectamos sistemas, criamos APIs REST em PHP com Laravel e integramos com Google, Meta, Stripe, WhatsApp e qualquer plataforma com API.</p>
+        <div class="service-tags">
+          <span class="service-tag">PHP com Laravel</span><span class="service-tag">REST API</span><span class="service-tag">Google</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">
+          <svg class="svc-svg"><use href="#i-automation"/></svg>
+        </div>
+        <div class="service-title">Automações</div>
+        <p class="service-desc">Fluxos automáticos com N8N e Python — Google Workspace, bots de WhatsApp e relatórios sem intervenção manual.</p>
+        <div class="service-tags">
+          <span class="service-tag">N8N</span><span class="service-tag">Python</span><span class="service-tag">Google Workspace</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">
+          <svg class="svc-svg"><use href="#i-chatbot"/></svg>
+        </div>
+        <div class="service-title">Chatbots e IA</div>
+        <p class="service-desc">Atendimento automático 24h com chatbots no WhatsApp ou site, integrados a IA (GPT/Claude) treinada nos seus dados.</p>
+        <div class="service-tags">
+          <span class="service-tag">Python</span><span class="service-tag">LLM/GPT</span><span class="service-tag">WhatsApp API</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">
+          <svg class="svc-svg"><use href="#i-devops"/></svg>
+        </div>
+        <div class="service-title">DevOps e CI/CD</div>
+        <p class="service-desc">Entrega contínua com GitHub Actions, Docker e metodologia ágil — projetos que crescem sem virar caos.</p>
+        <div class="service-tags">
+          <span class="service-tag">Docker</span><span class="service-tag">CI/CD</span><span class="service-tag">GitHub Actions</span>
+        </div>
+      </div>
+
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">
+          <svg class="svc-svg"><use href="#i-consulting"/></svg>
+        </div>
+        <div class="service-title">Consultoria de TI</div>
+        <p class="service-desc">Diagnóstico de sistemas, arquitetura, hora técnica avulsa e mentoria — um sênior disponível sem o custo de um CLT.</p>
+        <div class="service-tags">
+          <span class="service-tag">Diagnóstico</span><span class="service-tag">Arquitetura</span><span class="service-tag">Mentoria</span>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="servicos.html" class="btn btn-outline btn-lg">
+        Ver todos os serviços <svg class="icon"><use href="#i-arrow"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── COMO TRABALHAMOS ───────────────────────────────────── -->
+<section class="section cta-section">
+  <div class="container cta-inner">
+    <span class="section-tag">Metodologia</span>
+    <h2 class="section-title cta-title" data-s="home_method_title">Do problema à solução em 4 passos</h2>
+    <div class="grid-4 reveal" style="margin-top:2.5rem;text-align:left">
+      <div class="card">
+        <div class="card-icon"><svg class="svc-svg" style="width:22px;height:22px"><use href="#i-consulting"/></svg></div>
+        <div class="card-title" data-s="home_step1_title">1. Diagnóstico</div>
+        <p class="card-text" data-s="home_step1_desc">Entendemos a dor, o objetivo e o que precisa existir para resolver de verdade.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg class="svc-svg" style="width:22px;height:22px"><use href="#i-post"/></svg></div>
+        <div class="card-title" data-s="home_step2_title">2. Proposta</div>
+        <p class="card-text" data-s="home_step2_desc">Escopo fechado, prazo e valor definidos antes de começar. Sem surpresa.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg class="svc-svg" style="width:22px;height:22px"><use href="#i-devops"/></svg></div>
+        <div class="card-title" data-s="home_step3_title">3. Desenvolvimento</div>
+        <p class="card-text" data-s="home_step3_desc">Entregas semanais com CI/CD. Você acompanha o progresso o tempo todo.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><svg class="svc-svg" style="width:22px;height:22px"><use href="#i-check"/></svg></div>
+        <div class="card-title" data-s="home_step4_title">4. Entrega</div>
+        <p class="card-text" data-s="home_step4_desc">Treinamento, documentação e suporte inclusos. Não sumimos depois de entregar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── EQUIPE ─────────────────────────────────────────────── -->
+<section class="section" id="sobre">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">A equipe</span>
+      <h2 class="section-title" data-s="home_about_title">Dev + PM — uma combinação rara</h2>
+      <p class="section-subtitle" data-s="home_about_sub">Cada projeto tem um desenvolvedor que entende negócio e um PM que entende tecnologia.</p>
+    </div>
+    <div class="team-grid reveal" id="team-grid-home"><!-- carregado via JS --></div>
+  </div>
+</section>
+
+<!-- ── STACK ──────────────────────────────────────────────── -->
+<section class="section-sm" style="background:var(--surface3);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light)">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:2rem">
+      <span class="section-tag">Stack</span>
+      <h3 class="section-title">Tecnologias que dominamos</h3>
+    </div>
+    <div class="stack-wrap reveal">
+      <div class="stack-chip"><svg class="icon"><use href="#i-systems"/></svg> PHP / PHP com Laravel</div>
+      <div class="stack-chip"><svg class="icon"><use href="#i-systems"/></svg> PHP com Laravel (APIs REST)</div>
+      <div class="stack-chip"><svg class="icon"><use href="#i-systems"/></svg> React / React Native</div>
+      <div class="stack-chip"><svg class="icon"><use href="#i-systems"/></svg> Python / FastAPI / Django</div>
+      <div class="stack-chip"><svg class="icon"><use href="#i-systems"/></svg> Java com Spring Boot</div>
+      <div class="stack-chip"><svg class="icon"><use href="#i-db"/></svg> MySQL · SQL Server</div>
+      <div class="stack-chip"><svg class="icon"><use href="#i-devops"/></svg> Docker · CI/CD</div>
+      <div class="stack-chip"><svg class="icon"><use href="#i-api"/></svg> APIs REST · Webhooks</div>
+      <div class="stack-chip"><svg class="icon"><use href="#i-automation"/></svg> N8N · Automações</div>
+      <div class="stack-chip"><svg class="icon"><use href="#i-web"/></svg> WordPress · WooCommerce</div>
+      <div class="stack-chip"><svg class="icon"><use href="#i-chatbot"/></svg> IA / LLMs · Chatbots</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BLOG PREVIEW ───────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Blog Técnico</span>
+      <h2 class="section-title">Últimos artigos</h2>
+      <p class="section-subtitle">Conteúdo técnico e de negócio — como a tecnologia pode transformar sua empresa.</p>
+    </div>
+    <div class="blog-grid" id="home-blog"></div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="blog.html" class="btn btn-outline">Ver todos os artigos <svg class="icon"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA ────────────────────────────────────────────────── -->
+<section class="section cta-section" id="contato">
+  <div class="container">
+    <div class="cta-inner">
+      <span class="section-tag">Vamos conversar</span>
+      <h2 class="section-title cta-title" data-s="home_cta_title">Tem um problema que a tecnologia pode resolver?</h2>
+      <p class="cta-sub" data-s="home_cta_sub">Em 15 minutos você sabe se temos uma solução — e quanto vai custar. Sem enrolação.</p>
+      <!-- Formulário de Contato (Formspree) -->
+      <form id="contact-form" id="contact-form" data-api="/contact"
+        style="background:rgba(255,255,255,.04);border:1px solid var(--border-light);border-radius:var(--radius);padding:1.75rem;margin:1.5rem auto 2rem;max-width:520px;text-align:left">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+          <div>
+            <label style="font-size:.8rem;color:var(--text-mut);display:block;margin-bottom:.35rem">Nome</label>
+            <input name="name" type="text" required placeholder="Seu nome" class="form-control" style="background:var(--surface);border:1px solid var(--border-light);border-radius:var(--radius-sm);padding:.65rem .9rem;color:var(--text);width:100%;box-sizing:border-box">
+          </div>
+          <div>
+            <label style="font-size:.8rem;color:var(--text-mut);display:block;margin-bottom:.35rem">E-mail</label>
+            <input name="email" type="email" required placeholder="seu@email.com" class="form-control" style="background:var(--surface);border:1px solid var(--border-light);border-radius:var(--radius-sm);padding:.65rem .9rem;color:var(--text);width:100%;box-sizing:border-box">
+          </div>
+        </div>
+        <div style="margin-bottom:1rem">
+          <label style="font-size:.8rem;color:var(--text-mut);display:block;margin-bottom:.35rem">O que precisa?</label>
+          <select name="service" style="background:var(--surface);border:1px solid var(--border-light);border-radius:var(--radius-sm);padding:.65rem .9rem;color:var(--text);width:100%;box-sizing:border-box">
+            <option value="">Selecione (opcional)</option>
+            <option>Sistema / SaaS</option>
+            <option>Site ou E-commerce</option>
+            <option>API / Integração</option>
+            <option>Automação</option>
+            <option>Chatbot / IA</option>
+            <option>DevOps / CI/CD</option>
+            <option>Consultoria</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div style="margin-bottom:1.25rem">
+          <label style="font-size:.8rem;color:var(--text-mut);display:block;margin-bottom:.35rem">Mensagem</label>
+          <textarea name="message" rows="3" required placeholder="Descreva brevemente o seu projeto ou dúvida..." style="background:var(--surface);border:1px solid var(--border-light);border-radius:var(--radius-sm);padding:.65rem .9rem;color:var(--text);width:100%;box-sizing:border-box;resize:vertical"></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="Novo contato — EJ Tecnologia">
+        <input type="text" name="_gotcha" style="display:none"> <!-- honeypot anti-spam -->
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">
+          <svg class="icon icon-sm"><use href="#i-email"/></svg> Enviar mensagem
+        </button>
+        <p id="contact-ok" style="display:none;color:var(--success);text-align:center;margin-top:.75rem;font-size:.875rem">✅ Mensagem enviada! Retornamos em até 24h.</p>
+        <p id="contact-err" style="display:none;color:var(--danger);text-align:center;margin-top:.75rem;font-size:.875rem">❌ Erro ao enviar. Tente pelo WhatsApp.</p>
+      </form>
+      <div class="cta-acts">
+        <a href="https://wa.me/5511999999999" data-s-wa="contact_whatsapp" class="btn btn-whatsapp btn-lg" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0;display:inline-block;vertical-align:middle"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg> Falar no WhatsApp
+        </a>
+        <a href="mailto:contato@ejtecnologia.com.br" data-s-mail="contact_email" class="btn btn-secondary btn-lg">
+          <svg class="icon"><use href="#i-email"/></svg> Enviar e-mail
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-icon">EJ</div><span class="logo-text">EJ Tecnologia</span></a>
+        <p>Sistemas, automações, sites e APIs feitos sob medida para o seu negócio crescer com tecnologia de verdade.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Soluções</h4>
+        <div class="footer-links">
+          <a href="servicos.html">Sistemas e SaaS</a>
+          <a href="servicos.html">Sites e E-commerce</a>
+          <a href="servicos.html">Aplicativos</a>
+          <a href="servicos.html">APIs e Integrações</a>
+          <a href="servicos.html">Automações</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <div class="footer-links">
+          <a href="#sobre">Quem somos</a>
+          <a href="blog.html">Blog</a>
+          <a href="#contato">Contato</a>
+          <a href="admin.html">Admin</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <div class="footer-links">
+          <a href="https://wa.me/5511999999999" data-s-wa="contact_whatsapp" target="_blank">WhatsApp</a>
+          <a href="mailto:contato@ejtecnologia.com.br" data-s-mail="contact_email">E-mail</a>
+          <a href="https://www.linkedin.com/in/emerson-souza-55994b13b/" target="_blank">LinkedIn Emerson</a>
+          <a href="https://www.linkedin.com/in/julio-cesar-souza-leal/" target="_blank">LinkedIn Julio</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><span data-s="site_name">EJ Tecnologia</span> — Emerson Souza & Julio Cesar Leal. <span style="color:var(--text-mut);font-size:.85em" data-s="footer_text"></span></p>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/emerson-souza-55994b13b/" target="_blank" class="social-btn" title="LinkedIn Emerson">
+          <svg class="icon" style="width:16px;height:16px"><use href="#i-linkedin"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/julio-cesar-souza-leal/" target="_blank" class="social-btn" title="LinkedIn Julio">
+          <svg class="icon" style="width:16px;height:16px"><use href="#i-linkedin"/></svg>
+        </a>
+        <a href="https://wa.me/5511999999999" data-s-wa="contact_whatsapp" target="_blank" class="social-btn" title="WhatsApp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0;display:inline-block;vertical-align:middle"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/icons.js" defer></script>
+<script src="js/data.js" defer></script>
+<script src="js/config.js?v=45" defer></script>
+<script src="js/main.js?v=18" defer></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Performance: preconnect, favicon, theme-color -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta name="theme-color" content="#6C63FF">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Artigo — EJ Tecnologia</title>
+  <meta name="description" content="Blog técnico da EJ Tecnologia.">
+  <!-- Fontes (mais rápido que @import no CSS) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="css/style.css" as="style">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Google Analytics (substituir G-XXXXXXXXXX pelo seu ID) -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script> -->
+</head>
+<body>
+
+<header class="header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">EJ</div>
+        <span class="logo-text">EJ Tecnologia</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html"    class="nav-link">Home</a>
+        <a href="servicos.html" class="nav-link">Serviços</a>
+        <a href="blog.html"     class="nav-link">Blog</a>
+        <a href="index.html#sobre"   class="nav-link">Sobre</a>
+        <a href="index.html#contato" class="nav-link">Contato</a>
+      </nav>
+      <div class="header-actions">
+        <a href="https://wa.me/5511999999999" data-s-wa="contact_whatsapp" class="btn btn-whatsapp btn-sm" target="_blank">💬 WhatsApp</a>
+      </div>
+      <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav">
+  <a href="index.html"    class="nav-link">Home</a>
+  <a href="servicos.html" class="nav-link">Serviços</a>
+  <a href="blog.html"     class="nav-link">Blog</a>
+  <a href="index.html#sobre"   class="nav-link">Sobre</a>
+  <a href="index.html#contato" class="nav-link">Contato</a>
+  <a href="https://wa.me/5511999999999" data-s-wa="contact_whatsapp" class="btn btn-whatsapp" target="_blank">💬 WhatsApp</a>
+</nav>
+
+<div style="padding-top:var(--nav-h)">
+  <div class="container" id="post-container">
+    <div style="text-align:center;padding:6rem 0;color:var(--text-mut)">Carregando...</div>
+  </div>
+</div>
+
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-inner">
+      <h2 class="section-title cta-title">Precisa de uma solução como essa?</h2>
+      <p class="cta-sub">Fale com a gente. Em 15 minutos você sabe se temos a resposta certa para o seu negócio.</p>
+      <div class="cta-acts">
+        <a href="https://wa.me/5511999999999" data-s-wa="contact_whatsapp" class="btn btn-whatsapp btn-lg" target="_blank">💬 Falar no WhatsApp</a>
+        <a href="blog.html" class="btn btn-secondary btn-lg">← Mais artigos</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><div class="logo-icon">EJ</div><span class="logo-text">EJ Tecnologia</span></a>
+        <p>Sistemas, automações, sites e APIs feitos sob medida para o seu negócio crescer.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Soluções</h4>
+        <div class="footer-links">
+          <a href="servicos.html">Sistemas e SaaS</a>
+          <a href="servicos.html">Automações</a>
+          <a href="servicos.html">APIs</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <div class="footer-links">
+          <a href="index.html#sobre">Quem somos</a>
+          <a href="blog.html">Blog</a>
+          <a href="index.html#contato">Contato</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <div class="footer-links">
+          <a href="https://wa.me/5511999999999" data-s-wa="contact_whatsapp" target="_blank">WhatsApp</a>
+          <a href="mailto:contato@ejtecnologia.com.br" data-s-mail="contact_email">E-mail</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><span data-s="site_name">EJ Tecnologia</span> — Emerson Souza & Julio Cesar Leal. <span style="color:var(--text-mut);font-size:.85em" data-s="footer_text"></span></p>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/emerson-souza-55994b13b/" target="_blank" class="social-btn">in</a>
+        <a href="https://wa.me/5511999999999" data-s-wa="contact_whatsapp" target="_blank" class="social-btn">💬</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/icons.js" defer></script>
+<script src="js/data.js" defer></script>
+<script src="js/config.js?v=45" defer></script>
+<script src="js/main.js?v=9" defer></script>
+</body>
+</html>

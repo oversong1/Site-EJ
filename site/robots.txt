@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Bloqueia o painel admin para bots
+Disallow: /admin.html
+
+Sitemap: https://ejtecnologia.com.br/sitemap.xml
