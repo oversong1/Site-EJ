@@ -31,7 +31,7 @@
           <a href="{{ route('home') }}#sobre">Quem somos</a>
           <a href="{{ route('blog') }}">Blog</a>
           <a href="{{ route('home') }}#contato">Contato</a>
-          <a href="{{ route('admin') }}">Admin</a>
+          <a href="{{ route('ejadmin') }}">Admin</a>
         </div>
       </div>
       <div class="footer-col">

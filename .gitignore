@@ -43,3 +43,17 @@ CREDENCIAIS-SERVIDOR.md
 backend/storage/framework/sessions/
 backend/storage/framework/views/
 backend/storage/framework/cache/
+
+# ── Documentação interna (manter só local, não no GitHub público) ──
+DOCUMENTACAO.md
+DEPLOY.md
+DEPLOY-PASSO-A-PASSO.md
+REVISAO-E-PENDENCIAS.md
+CREDENCIAIS-SERVIDOR.md
+PRODUCAO.env
+conteudo-paginas/
+design/
+dev/
+nota.md
+database/seed-data.sql
+database/import.sh
