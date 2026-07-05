@@ -28,8 +28,8 @@ class SitemapController extends Controller
         // Páginas estáticas
         $staticPages = [
             ['loc' => $baseUrl . '/',               'lastmod' => $today, 'freq' => 'weekly',  'prio' => '1.0'],
-            ['loc' => $baseUrl . '/servicos.html',  'lastmod' => $today, 'freq' => 'monthly', 'prio' => '0.9'],
-            ['loc' => $baseUrl . '/blog.html',      'lastmod' => $today, 'freq' => 'weekly',  'prio' => '0.8'],
+            ['loc' => $baseUrl . '/servicos',  'lastmod' => $today, 'freq' => 'monthly', 'prio' => '0.9'],
+            ['loc' => $baseUrl . '/blog',       'lastmod' => $today, 'freq' => 'weekly',  'prio' => '0.8'],
         ];
 
         foreach ($staticPages as $p) {
@@ -43,7 +43,7 @@ class SitemapController extends Controller
                 : $post->created_at->format('Y-m-d');
 
             $urls[] = [
-                'loc'     => $baseUrl . '/post.html?id=' . $post->id,
+                'loc'     => $baseUrl . '/blog/' . $post->slug,
                 'lastmod' => $lastmod,
                 'freq'    => 'monthly',
                 'prio'    => '0.7',
@@ -73,7 +73,7 @@ class SitemapController extends Controller
             'posts'        => $posts->map(fn($p) => [
                 'id'      => $p->id,
                 'title'   => $p->title,
-                'url'     => $baseUrl . '/post.html?id=' . $p->id,
+                'url'     => $baseUrl . '/blog/' . $p->slug,
                 'lastmod' => optional($p->updated_at)->format('Y-m-d'),
             ]),
         ]);

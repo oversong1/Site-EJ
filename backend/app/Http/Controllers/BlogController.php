@@ -14,9 +14,14 @@ class BlogController extends Controller
         return view('blog', compact('posts', 'settings'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $post     = Post::where('published', true)->findOrFail($id);
+        // Aceita slug ou ID (compatibilidade)
+        $post = Post::where('published', true)
+            ->where(function($q) use ($slug) {
+                $q->where('slug', $slug)->orWhere('id', is_numeric($slug) ? $slug : 0);
+            })
+            ->firstOrFail();
         $settings = Setting::all()->pluck('value', 'key');
         return view('post', compact('post', 'settings'));
     }

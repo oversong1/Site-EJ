@@ -1,3 +1,23 @@
+
+
+<?php
+function blogCatEmoji($cat) {
+    $map = [
+        'sistemas' => '🖥', 'sistema' => '🖥', 'saas' => '🖥', 'erp' => '🏢',
+        'automação' => '🤖', 'automacoes' => '🤖', 'automação' => '🤖',
+        'devops' => '🚀', 'ci/cd' => '🚀', 'docker' => '🐳',
+        'api' => '🔌', 'integração' => '🔗', 'webhook' => '📡',
+        'mobile' => '📱', 'app' => '📱',
+        'site' => '🌐', 'web' => '🌐', 'wordpress' => '🌐',
+        'ia' => '🧠', 'chatbot' => '💬', 'inteligência' => '🧠',
+        'consultoria' => '💡', 'negócio' => '💡',
+        'segurança' => '🛡',
+    ];
+    $key = strtolower($cat ?? '');
+    foreach($map as $k => $v) { if(str_contains($key, $k)) return $v; }
+    return '📝';
+}
+?>
 <?php $__env->startSection('title', 'Blog — ' . $settings->get('site_name','EJ Tecnologia')); ?>
 <?php $__env->startSection('description', 'Artigos técnicos sobre PHP, Laravel, automações, IA, DevOps e tecnologia para negócios.'); ?>
 
@@ -19,13 +39,15 @@
       <?php $__empty_1 = true; $__currentLoopData = $posts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $post): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
         <?php $color = $post->color ?? '#6C63FF'; ?>
         <article class="blog-card reveal" style="border-top:3px solid <?php echo e($color); ?>"
-                 onclick="location.href='<?php echo e(route('post', $post->id)); ?>'">
+                 onclick="location.href='<?php echo e(route('post', $post->slug)); ?>'">
           <?php if($post->image_url): ?>
             <div class="blog-thumb">
               <img src="<?php echo e($post->image_url); ?>" alt="<?php echo e($post->title); ?>" loading="lazy" style="width:100%;height:100%;object-fit:cover">
             </div>
           <?php else: ?>
-            <div class="blog-thumb" style="background:linear-gradient(135deg,<?php echo e($color); ?>28,<?php echo e($color); ?>18)"></div>
+            <div class="blog-thumb" style="background:linear-gradient(135deg,<?php echo e($color); ?>28,<?php echo e($color); ?>18);display:flex;align-items:center;justify-content:center">
+              <span style="font-size:3rem"><?php echo e(blogCatEmoji($post->category)); ?></span>
+            </div>
           <?php endif; ?>
           <div class="blog-body">
             <span class="blog-cat" style="background:<?php echo e($color); ?>22;color:<?php echo e($color); ?>"><?php echo e($post->category); ?></span>

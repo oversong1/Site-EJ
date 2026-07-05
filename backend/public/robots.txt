@@ -1,2 +1,9 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# Admin não indexado
+Disallow: /admin
+Disallow: /api/
+
+# Sitemap dinâmico (atualiza automaticamente com novos posts)
+Sitemap: https://codesize.com.br/api/sitemap.xml

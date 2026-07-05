@@ -1,4 +1,12 @@
 @extends('layouts.app')
+
+@php
+function blogCatEmoji($cat) {
+    $map = ['sistemas'=>'🖥','sistema'=>'🖥','saas'=>'🖥','erp'=>'🏢','automação'=>'🤖','automacoes'=>'🤖','devops'=>'🚀','api'=>'🔌','integração'=>'🔗','mobile'=>'📱','site'=>'🌐','web'=>'🌐','ia'=>'🧠','chatbot'=>'💬','consultoria'=>'💡'];
+    $key = strtolower($cat ?? '');
+    foreach($map as $k=>$v){if(str_contains($key,$k))return $v;}return '📝';
+}
+@endphp
 @section('title', $post->title . ' — ' . $settings->get('site_name','EJ Tecnologia'))
 @section('description', $post->excerpt ?? '')
 
@@ -31,7 +39,9 @@
            style="width:100%;border-radius:var(--radius-lg);margin-bottom:2.5rem;max-height:320px;object-fit:cover">
     @else
       @php $color = $post->color ?? '#6C63FF'; @endphp
-      <div class="blog-thumb" style="border-radius:var(--radius-lg);margin-bottom:2.5rem;height:220px;background:linear-gradient(135deg,{{ $color }}28,{{ $color }}18)"></div>
+      <div class="blog-thumb" style="border-radius:var(--radius-lg);margin-bottom:2.5rem;height:220px;background:linear-gradient(135deg,{{ $color }}28,{{ $color }}18);display:flex;align-items:center;justify-content:center">
+        <span style="font-size:4rem">{{ blogCatEmoji($post->category) }}</span>
+      </div>
     @endif
 
     <div class="post-content">{!! $post->content !!}</div>

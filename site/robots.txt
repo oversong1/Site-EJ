@@ -1,11 +1,9 @@
 User-agent: *
 Allow: /
 
-# Bloqueia o painel admin para bots
-Disallow: /admin.html
+# Admin não indexado
+Disallow: /admin
+Disallow: /api/
 
-# Em produção, o sitemap dinâmico inclui todos os posts:
-# Sitemap: https://ejtecnologia.com.br/api/sitemap.xml
-
-# Em desenvolvimento local (descomentar a linha acima em produção):
-Sitemap: https://ejtecnologia.com.br/sitemap.xml
+# Sitemap dinâmico (atualiza automaticamente com novos posts)
+Sitemap: https://codesize.com.br/api/sitemap.xml

@@ -1,3 +1,12 @@
+
+
+<?php
+function blogCatEmoji($cat) {
+    $map = ['sistemas'=>'🖥','sistema'=>'🖥','saas'=>'🖥','erp'=>'🏢','automação'=>'🤖','automacoes'=>'🤖','devops'=>'🚀','api'=>'🔌','integração'=>'🔗','mobile'=>'📱','site'=>'🌐','web'=>'🌐','ia'=>'🧠','chatbot'=>'💬','consultoria'=>'💡'];
+    $key = strtolower($cat ?? '');
+    foreach($map as $k=>$v){if(str_contains($key,$k))return $v;}return '📝';
+}
+?>
 <?php $__env->startSection('title', $post->title . ' — ' . $settings->get('site_name','EJ Tecnologia')); ?>
 <?php $__env->startSection('description', $post->excerpt ?? ''); ?>
 
@@ -30,7 +39,9 @@
            style="width:100%;border-radius:var(--radius-lg);margin-bottom:2.5rem;max-height:320px;object-fit:cover">
     <?php else: ?>
       <?php $color = $post->color ?? '#6C63FF'; ?>
-      <div class="blog-thumb" style="border-radius:var(--radius-lg);margin-bottom:2.5rem;height:220px;background:linear-gradient(135deg,<?php echo e($color); ?>28,<?php echo e($color); ?>18)"></div>
+      <div class="blog-thumb" style="border-radius:var(--radius-lg);margin-bottom:2.5rem;height:220px;background:linear-gradient(135deg,<?php echo e($color); ?>28,<?php echo e($color); ?>18);display:flex;align-items:center;justify-content:center">
+        <span style="font-size:4rem"><?php echo e(blogCatEmoji($post->category)); ?></span>
+      </div>
     <?php endif; ?>
 
     <div class="post-content"><?php echo $post->content; ?></div>
