@@ -19,7 +19,7 @@ Route::get('/blog/{slug}', [BlogController::class,    'show'])->name('post');
 
 // Admin panel — SPA em HTML/JS que usa a API
 Route::get('/ejadmin', function () {
-    return response()->file(public_path('admin.html'));
+    return response()->file(public_path('ejadmin.html'));
 })->name('ejadmin');
 
 // Health check
