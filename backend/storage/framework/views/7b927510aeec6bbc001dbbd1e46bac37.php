@@ -31,7 +31,7 @@
           <a href="<?php echo e(route('home')); ?>#sobre">Quem somos</a>
           <a href="<?php echo e(route('blog')); ?>">Blog</a>
           <a href="<?php echo e(route('home')); ?>#contato">Contato</a>
-          <a href="<?php echo e(route('admin')); ?>">Admin</a>
+          <a href="<?php echo e(route('ejadmin')); ?>">Admin</a>
         </div>
       </div>
       <div class="footer-col">

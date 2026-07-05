@@ -506,3 +506,37 @@ textarea.form-control { resize:vertical; min-height:130px; }
 .media-selectable { outline: 2px solid transparent; transition: outline .15s; }
 .media-selectable:hover { outline: 2px solid var(--primary); }
 .media-selected  { outline: 3px solid var(--primary) !important; }
+
+/* ── Hero pequeno (Serviços, Blog) ────────────────────── */
+.hero-sm {
+  padding: calc(var(--nav-h) + 3rem) 0 3rem;
+  background: linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%);
+  text-align: center;
+}
+.hero-sm .section-tag { margin-bottom: .75rem; }
+.hero-sm .hero-title  { font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
+.hero-sm .hero-sub    { color: var(--text-sec); max-width: 600px; margin: 0 auto; }
+
+/* ── WhatsApp flutuante (mobile) ──────────────────────── */
+.wpp-float {
+  display: none;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 56px;
+  height: 56px;
+  background: var(--wpp, #25D366);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,.4);
+  z-index: 9999;
+  transition: transform .2s, box-shadow .2s;
+  text-decoration: none;
+}
+.wpp-float:hover { transform: scale(1.1); box-shadow: 0 6px 24px rgba(0,0,0,.5); }
+.wpp-float svg   { width: 30px; height: 30px; fill: #fff; }
+
+@media (max-width: 768px) {
+  .wpp-float { display: flex; }
+}
