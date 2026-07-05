@@ -1,5 +1,3 @@
-
-
 <?php
 function blogCatEmoji($cat) {
     $map = ['sistemas'=>'🖥','sistema'=>'🖥','saas'=>'🖥','erp'=>'🏢','automação'=>'🤖','automacoes'=>'🤖','devops'=>'🚀','api'=>'🔌','integração'=>'🔗','mobile'=>'📱','site'=>'🌐','web'=>'🌐','ia'=>'🧠','chatbot'=>'💬','consultoria'=>'💡'];

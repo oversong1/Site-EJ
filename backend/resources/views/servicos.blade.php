@@ -81,5 +81,5 @@ function renderCards($cardList) {
 @endsection
 
 @section('scripts')
-<script src="/js/main.js?v=18" defer></script>
+<script src="/js/main.js?v=20" defer></script>
 @endsection

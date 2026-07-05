@@ -1,5 +1,3 @@
-
-
 <?php
 function blogCatEmoji($cat) {
     $map = [
@@ -307,7 +305,7 @@ function blogCatEmoji($cat) {
 
 <?php $__env->startSection('scripts'); ?>
 <script src="/js/data.js" defer></script>
-<script src="/js/main.js?v=18" defer></script>
+<script src="/js/main.js?v=20" defer></script>
 <?php $__env->stopSection(); ?>
 
 <?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH /var/www/app/resources/views/home.blade.php ENDPATH**/ ?>

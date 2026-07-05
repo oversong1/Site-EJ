@@ -310,7 +310,7 @@ function postCard(p) {
     ? `<div class="blog-thumb"><img src="${p.image_url}" alt="${EJ.esc(p.title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>`
     : `<div class="blog-thumb" style="background:linear-gradient(135deg,${color}28,${color}18)"><span style="font-size:3rem">${getCatEmoji(p.category)}</span></div>`;
   // cor sempre aplicada: borda superior do card + badge da categoria
-  return `<article class="blog-card reveal" style="border-top:3px solid ${color}" onclick="location.href='post.html?id=${p.id}'">${img}<div class="blog-body"><span class="blog-cat" style="background:${color}22;color:${color}">${EJ.esc(p.category)}</span><h3 class="blog-title">${EJ.esc(p.title)}</h3><p class="blog-exc">${EJ.esc(p.excerpt)}</p><div class="blog-meta"><span>✍️ ${EJ.esc(p.author)}</span><span>📖 ${EJ.esc(p.read_time||'5 min')}</span></div></div></article>`;
+  return `<article class="blog-card reveal" style="border-top:3px solid ${color}" onclick="location.href='/blog/${p.slug || p.id}'">${img}<div class="blog-body"><span class="blog-cat" style="background:${color}22;color:${color}">${EJ.esc(p.category)}</span><h3 class="blog-title">${EJ.esc(p.title)}</h3><p class="blog-exc">${EJ.esc(p.excerpt)}</p><div class="blog-meta"><span>✍️ ${EJ.esc(p.author)}</span><span>📖 ${EJ.esc(p.read_time||'5 min')}</span></div></div></article>`;
 }
 
 

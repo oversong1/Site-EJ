@@ -71,5 +71,5 @@ function blogCatEmoji($cat) {
 
 @section('scripts')
 <script src="/js/data.js" defer></script>
-<script src="/js/main.js?v=18" defer></script>
+<script src="/js/main.js?v=20" defer></script>
 @endsection
