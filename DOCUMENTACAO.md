@@ -279,3 +279,66 @@ Gera `dist/` com:
 - ✅ Performance direta: defer, preload, preconnect, lazy loading, fontes via link
 - ✅ build.py: minificação CSS/JS/HTML + gzip + .htaccess
 - ✅ Mídia: badge Em uso/Sem uso, extensão, tamanho, dimensões, alt text, deduplicação MD5
+
+---
+
+## 11. Migração para Laravel Blade (05/07/2026) — MUDANÇA ARQUITETURAL
+
+### O que mudou
+O site passou de **HTML estático + API** para **PHP/Laravel Blade server-side rendering**.
+
+### Arquitetura nova
+```
+Visitante acessa codesize.com.br
+→ Nginx recebe a requisição
+→ PHP/Laravel lê o MySQL diretamente
+→ Blade renderiza o HTML completo
+→ HTML já com todo o conteúdo é entregue ao browser
+→ Sem chamadas JS para API no carregamento inicial
+```
+
+### Rotas web
+| Rota | Controller | View |
+|------|-----------|------|
+| `GET /` | HomeController@index | home.blade.php |
+| `GET /servicos` | ServicosController@index | servicos.blade.php |
+| `GET /blog` | BlogController@index | blog.blade.php |
+| `GET /blog/{slug}` | BlogController@show | post.blade.php |
+| `GET /admin` | (arquivo estático) | admin.html |
+
+### URL SEO dos posts
+- **Antes:** `/blog/1` (ID numérico)
+- **Agora:** `/blog/o-que-e-saas-e-por-que-pode-transformar-o-seu-negocio` (slug)
+- Compatibilidade mantida: `/blog/1` ainda funciona
+
+### Arquivos das views (backend/resources/views/)
+- `layouts/app.blade.php` — layout base com CSS vars do banco no `:root`
+- `partials/header.blade.php` — header com WhatsApp e menu dinâmicos
+- `partials/footer.blade.php` — footer com dados do banco
+- `home.blade.php` — Home com banners, cards, equipe, blog preview, CTA
+- `servicos.blade.php` — Serviços com 6 seções de cards
+- `blog.blade.php` — Blog com posts + emoji fallback por categoria
+- `post.blade.php` — Post individual com OG tags
+
+### Assets (backend/public/)
+- `css/style.css` — CSS completo
+- `js/config.js`, `js/main.js`, `js/data.js`, `js/icons.js` — JS público
+- `js/admin.js` — JS do painel admin
+- `admin.html` — Painel admin (SPA que usa a API)
+
+### O que continua igual
+- Admin panel: SPA em HTML/JS chamando a API Laravel
+- API para o admin: todas as rotas `/api/*` funcionam normalmente
+- Banco de dados: mesma estrutura
+
+### Deploy no servidor (cPanel)
+1. `public_html` aponta para `backend/public/`
+2. O `index.php` do Laravel processa todas as requisições
+3. **Não precisa de subdomínio para a API** — tudo em um lugar
+4. Para atualizar: `git pull` via SSH + `php artisan view:clear`
+
+### SEO
+- Sitemap dinâmico: `GET /api/sitemap.xml` — inclui posts com slug
+- robots.txt: `Disallow: /admin`, `Disallow: /api/`, aponta para sitemap
+- Open Graph em todas as páginas (título, descrição, imagem)
+- Server-side rendering = conteúdo indexável sem JS
