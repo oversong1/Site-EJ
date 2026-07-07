@@ -7,7 +7,7 @@ function blogCatEmoji($cat) {
     foreach($map as $k=>$v){if(str_contains($key,$k))return $v;}return '📝';
 }
 @endphp
-@section('title', $post->title . ' — ' . $settings->get('site_name','EJ Tecnologia'))
+@section('title', $post->title . ' — ' . $settings->get('site_name','CodeSize'))
 @section('description', $post->excerpt ?? '')
 
 @section('og')

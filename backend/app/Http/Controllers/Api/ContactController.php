@@ -37,7 +37,7 @@ class ContactController extends Controller
         $username   = $settings->get('mail_username')   ?: env('MAIL_USERNAME',   '');
         $password   = $settings->get('mail_password')   ?: env('MAIL_PASSWORD',   '');
         $fromEmail  = $settings->get('mail_from_email') ?: env('MAIL_FROM_ADDRESS', $username);
-        $fromName   = $settings->get('mail_from_name')  ?: env('MAIL_FROM_NAME',  'EJ Tecnologia');
+        $fromName   = $settings->get('mail_from_name')  ?: env('MAIL_FROM_NAME',  'CodeSize');
         $toEmails   = $settings->get('mail_to_emails')  ?: env('MAIL_TO',         $username);
 
         // Configura mailer dinamicamente com os dados do banco
@@ -91,11 +91,11 @@ class ContactController extends Controller
         Config::set('mail.mailers.smtp.username',   $settings->get('mail_username',   ''));
         Config::set('mail.mailers.smtp.password',   $settings->get('mail_password',   ''));
         Config::set('mail.from.address',            $settings->get('mail_from_email', ''));
-        Config::set('mail.from.name',               $settings->get('mail_from_name',  'EJ Tecnologia'));
+        Config::set('mail.from.name',               $settings->get('mail_from_name',  'CodeSize'));
 
         try {
-            Mail::raw("Teste de configuração SMTP — EJ Tecnologia\n\nSe recebeu este e-mail, as configurações estão corretas!", function ($mail) use ($request) {
-                $mail->to($request->to)->subject('Teste SMTP — EJ Tecnologia');
+            Mail::raw("Teste de configuração SMTP — CodeSize\n\nSe recebeu este e-mail, as configurações estão corretas!", function ($mail) use ($request) {
+                $mail->to($request->to)->subject('Teste SMTP — CodeSize');
             });
             return response()->json(['message' => 'E-mail de teste enviado para ' . $request->to]);
         } catch (\Exception $e) {

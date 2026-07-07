@@ -1,13 +1,13 @@
 @php
   $wpp     = $settings->get('contact_whatsapp', '5511999999999');
   $wppUrl  = 'https://wa.me/' . preg_replace('/\D/', '', $wpp);
-  $siteName = $settings->get('site_name', 'EJ Tecnologia');
+  $siteName = $settings->get('site_name', 'CodeSize');
 @endphp
 <header class="header">
   <div class="container">
     <div class="header-inner">
       <a href="{{ route('home') }}" class="logo">
-        <div class="logo-icon">EJ</div>
+        <div class="logo-icon">CS</div>
         <span class="logo-text">{{ $siteName }}</span>
       </a>
       <nav class="nav">

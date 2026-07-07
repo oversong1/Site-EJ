@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?php echo $__env->yieldContent('title', 'EJ Tecnologia'); ?></title>
+  <title><?php echo $__env->yieldContent('title', 'CodeSize'); ?></title>
   <meta name="description" content="<?php echo $__env->yieldContent('description', 'Desenvolvemos sistemas SaaS, ERPs, automações, APIs, sites e aplicativos.'); ?>">
   <?php echo $__env->yieldContent('og'); ?>
   <link rel="preload" href="/css/style.css?v=2" as="style">

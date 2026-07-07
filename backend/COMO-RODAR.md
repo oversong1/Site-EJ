@@ -48,7 +48,7 @@ Acompanhe o progresso em tempo real:
 docker compose logs -f laravel
 ```
 
-Quando aparecer a mensagem `EJ Tecnologia — Tudo pronto!`, está pronto.
+Quando aparecer a mensagem `CodeSize — Tudo pronto!`, está pronto.
 
 ---
 
@@ -60,12 +60,6 @@ Quando aparecer a mensagem `EJ Tecnologia — Tudo pronto!`, está pronto.
 | **Painel Admin** | http://localhost/admin.html |
 | **phpMyAdmin** (banco) | http://localhost:8080 |
 
-**Credenciais do admin:**
-- E-mail: admin@ejtecnologia.com.br
-- E-mail: admin1@ejtecnologia.com.br
-- Senha:  ej@admin2026
-- Senha:  Ej@admin2026
-- Senha:  Ramonvaldez4@48
 
 ---
 

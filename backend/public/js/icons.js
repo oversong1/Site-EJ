@@ -1,5 +1,5 @@
 /* ============================================================
-   EJ TECNOLOGIA — SVG ICON SPRITE
+   CODESIZE — SVG ICON SPRITE
    Injetado no DOM via JS — funciona em file:// e HTTP
    ============================================================ */
 (function () {

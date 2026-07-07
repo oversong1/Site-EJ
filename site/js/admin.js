@@ -1,12 +1,12 @@
 /* ============================================================
-   EJ TECNOLOGIA - ADMIN PANEL JS
+   CODESIZE - ADMIN PANEL JS
    Roles: admin (tudo) | colaborador (conteúdo, sem usuários)
    ============================================================ */
 
 /* ── Seções de conteúdo editável (definidas aqui, não no banco) ── */
 const PAGE_SECTIONS = [
   // GLOBAL
-  { tab:'Global', section:'Identidade',    key:'site_name',         label:'Nome do site',               type:'text',     default:'EJ Tecnologia',                       where:'footer + aba do browser' },
+  { tab:'Global', section:'Identidade',    key:'site_name',         label:'Nome do site',               type:'text',     default:'CodeSize',                       where:'footer + aba do browser' },
   { tab:'Global', section:'Contato',       key:'contact_whatsapp',  label:'WhatsApp (DDI+DDD+número)',  type:'text',     default:'5511999999999',                       hint:'Apenas números. Ex: 5511999999999', where:'todos os botões de WhatsApp' },
   { tab:'Global', section:'Contato',       key:'contact_email',     label:'E-mail de contato',          type:'text',     default:'contato@ejtecnologia.com.br',          where:'todos os links de e-mail' },
   { tab:'Global', section:'Rodapé',      key:'footer_text',       label:'Texto do rodapé',          type:'textarea', default:'Sistemas, automações, sites e APIs feitos sob medida para o seu negócio crescer.', where:'rodapé de todas as páginas' },
@@ -1383,7 +1383,7 @@ async function loadMailConfig() {
     'mail-port':       s.mail_port       || '587',
     'mail-encryption': s.mail_encryption || 'tls',
     'mail-username':   s.mail_username   || '',
-    'mail-from-name':  s.mail_from_name  || 'EJ Tecnologia',
+    'mail-from-name':  s.mail_from_name  || 'CodeSize',
     'mail-from-email': s.mail_from_email || '',
     'mail-to-emails':  s.mail_to_emails  || '',
   };
@@ -1402,7 +1402,7 @@ async function saveMailConfig() {
     mail_port:       document.getElementById('mail-port')?.value?.trim()       || '587',
     mail_encryption: document.getElementById('mail-encryption')?.value         || 'tls',
     mail_username:   document.getElementById('mail-username')?.value?.trim()   || '',
-    mail_from_name:  document.getElementById('mail-from-name')?.value?.trim()  || 'EJ Tecnologia',
+    mail_from_name:  document.getElementById('mail-from-name')?.value?.trim()  || 'CodeSize',
     mail_from_email: document.getElementById('mail-from-email')?.value?.trim() || '',
     mail_to_emails:  document.getElementById('mail-to-emails')?.value?.trim()  || '',
   };

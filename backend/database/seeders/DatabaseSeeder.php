@@ -57,7 +57,7 @@ class DatabaseSeeder extends Seeder
                 ['key' => '--secondary', 'value' => '#00D9FF', 'group' => 'colors', 'type' => 'color'],
                 ['key' => '--bg',        'value' => '#0F0F1A', 'group' => 'colors', 'type' => 'color'],
                 ['key' => '--surface',   'value' => '#1A1A2E', 'group' => 'colors', 'type' => 'color'],
-                ['key' => 'site_name',   'value' => 'EJ Tecnologia', 'group' => 'general', 'type' => 'text'],
+                ['key' => 'site_name',   'value' => 'CodeSize', 'group' => 'general', 'type' => 'text'],
                 ['key' => 'whatsapp',    'value' => '5511999999999', 'group' => 'contact', 'type' => 'text'],
                 ['key' => 'email',       'value' => 'contato@ejtecnologia.com.br', 'group' => 'contact', 'type' => 'text'],
             ];

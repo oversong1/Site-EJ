@@ -19,13 +19,13 @@ function blogCatEmoji($cat) {
 }
 @endphp
 
-@section('title', ($settings->get('site_name','EJ Tecnologia') . ' — Sistemas, Automações e Sites Sob Medida'))
+@section('title', ($settings->get('site_name','CodeSize') . ' — Sistemas, Automações e Sites Sob Medida'))
 @section('description', 'Desenvolvemos sistemas SaaS, ERPs, automações, APIs, sites e aplicativos. Emerson Souza + Julio Cesar Leal.')
 
 @section('og')
 <meta property="og:type"        content="website">
 <meta property="og:url"         content="{{ url('/') }}">
-<meta property="og:title"       content="{{ $settings->get('site_name','EJ Tecnologia') }} — Sistemas, Automações e Sites Sob Medida">
+<meta property="og:title"       content="{{ $settings->get('site_name','CodeSize') }} — Sistemas, Automações e Sites Sob Medida">
 <meta property="og:description" content="Desenvolvemos sistemas SaaS, ERPs, automações, APIs, sites e aplicativos.">
 <meta property="og:image"       content="{{ url('/og-image.png') }}">
 <meta property="og:locale"      content="pt_BR">

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Serviços — ' . $settings->get('site_name','EJ Tecnologia'))
+@section('title', 'Serviços — ' . $settings->get('site_name','CodeSize'))
 @section('description', 'Sistemas, sites, e-commerce, APIs, automações, chatbots, CI/CD e consultoria de TI.')
 
 @php

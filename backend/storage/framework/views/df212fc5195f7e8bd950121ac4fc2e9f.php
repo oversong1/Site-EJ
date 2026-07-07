@@ -16,7 +16,7 @@ function blogCatEmoji($cat) {
     return '📝';
 }
 ?>
-<?php $__env->startSection('title', 'Blog — ' . $settings->get('site_name','EJ Tecnologia')); ?>
+<?php $__env->startSection('title', 'Blog — ' . $settings->get('site_name','CodeSize')); ?>
 <?php $__env->startSection('description', 'Artigos técnicos sobre PHP, Laravel, automações, IA, DevOps e tecnologia para negócios.'); ?>
 
 <?php $__env->startSection('content'); ?>

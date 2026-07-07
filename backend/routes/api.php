@@ -16,7 +16,7 @@ use App\Http\Middleware\RequireEditor;
 
 /*
 |--------------------------------------------------------------------------
-| EJ Tecnologia — API Routes
+| CodeSize — API Routes
 | Roles: admin (tudo) | colaborador (conteúdo, sem usuários)
 |--------------------------------------------------------------------------
 */

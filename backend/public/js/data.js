@@ -1,5 +1,5 @@
 /* ============================================================
-   EJ TECNOLOGIA — DATA LAYER
+   CODESIZE — DATA LAYER
    Gerencia banners e posts via localStorage
    Senha admin: ej@admin2026
    ============================================================ */

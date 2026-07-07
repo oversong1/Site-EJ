@@ -1,5 +1,5 @@
 /* ============================================================
-   EJ TECNOLOGIA — CONFIGURAÇÃO DA API
+   CODESIZE — CONFIGURAÇÃO DA API
    Timeout de 3s para não travar quando Docker está offline
    ============================================================ */
 const CFG = {

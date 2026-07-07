@@ -1,5 +1,5 @@
 /* ============================================================
-   EJ TECNOLOGIA — SCRIPTS PRINCIPAIS
+   CODESIZE — SCRIPTS PRINCIPAIS
    Usa API Laravel quando disponível, fallback localStorage
    ============================================================ */
 
@@ -92,7 +92,7 @@ function renderSlider(banners) {
     const cta2Btn = b.cta2_text ? `<a href="${b.cta2_link||'#'}" class="btn btn-secondary btn-lg">${EJ.esc(b.cta2_text)} &rarr;</a>` : '';
     const contentHtml = `
       <div class="hero-content">
-        <div class="hero-tag anim-fiu"><span class="hero-dot"></span>EJ Tecnologia — Dev + PM</div>
+        <div class="hero-tag anim-fiu"><span class="hero-dot"></span>CodeSize — Dev + PM</div>
         <h1 class="hero-title anim-fiu d1">${EJ.esc(b.title)}</h1>
         <p class="hero-sub anim-fiu d2">${EJ.esc(b.subtitle)}</p>
         <div class="hero-actions anim-fiu d3">${ctaBtn}${cta2Btn}</div>
@@ -208,7 +208,7 @@ async function postPage() {
     post = res.ok ? res.data : EJ.getPost(id);
   }
   if (!post) { el.innerHTML = '<div class="text-center" style="padding:5rem 0"><h2>Post não encontrado</h2><a href="blog.html" class="btn btn-primary mt-4">← Blog</a></div>'; return; }
-  document.title = post.title + ' — EJ Tecnologia';
+  document.title = post.title + ' — CodeSize';
   const img = post.image_url
     ? `<img src="${post.image_url}" alt="${EJ.esc(post.title)}" style="width:100%;border-radius:var(--radius-lg);margin-bottom:2.5rem;max-height:320px;object-fit:cover">`
     : `<div class="blog-thumb" style="border-radius:var(--radius-lg);margin-bottom:2.5rem;height:220px;background:linear-gradient(135deg,${post.color||'#6C63FF'}28,${post.color||'#00D9FF'}18)"><span style="font-size:4rem">${getCatEmoji(post.category)}</span></div>`;
@@ -282,7 +282,7 @@ async function postPage() {
     post = res.ok ? res.data : EJ.getPost(id);
   }
   if (!post) { el.innerHTML = '<div class="text-center" style="padding:5rem 0"><h2>Post não encontrado</h2><a href="blog.html" class="btn btn-primary mt-4">← Blog</a></div>'; return; }
-  document.title = post.title + ' — EJ Tecnologia';
+  document.title = post.title + ' — CodeSize';
   const img = post.image_url
     ? `<img src="${post.image_url}" alt="${EJ.esc(post.title)}" style="width:100%;border-radius:var(--radius-lg);margin-bottom:2.5rem;max-height:320px;object-fit:cover">`
     : `<div class="blog-thumb" style="border-radius:var(--radius-lg);margin-bottom:2.5rem;height:220px;background:linear-gradient(135deg,${post.color||'#6C63FF'}28,${post.color||'#00D9FF'}18)"><span style="font-size:4rem">${getCatEmoji(post.category)}</span></div>`;

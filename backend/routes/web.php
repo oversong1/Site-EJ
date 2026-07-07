@@ -7,7 +7,7 @@ use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
-| EJ Tecnologia — Web Routes (server-side rendering com Blade)
+| CodeSize — Web Routes (server-side rendering com Blade)
 |--------------------------------------------------------------------------
 */
 

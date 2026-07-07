@@ -2,7 +2,7 @@
   $wpp      = $settings->get('contact_whatsapp', '5511999999999');
   $wppUrl   = 'https://wa.me/' . preg_replace('/\D/', '', $wpp);
   $email    = $settings->get('contact_email', 'contato@ejtecnologia.com.br');
-  $siteName = $settings->get('site_name', 'EJ Tecnologia');
+  $siteName = $settings->get('site_name', 'CodeSize');
   $footerTxt = $settings->get('footer_text', '');
 ?>
 <footer class="footer">
@@ -10,7 +10,7 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="<?php echo e(route('home')); ?>" class="logo">
-          <div class="logo-icon">EJ</div>
+          <div class="logo-icon">CS</div>
           <span class="logo-text"><?php echo e($siteName); ?></span>
         </a>
         <p>Sistemas, automações, sites e APIs feitos sob medida para o seu negócio crescer com tecnologia de verdade.</p>

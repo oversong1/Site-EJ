@@ -1,4 +1,4 @@
-# EJ Tecnologia — Backend Laravel
+# CodeSize — Backend Laravel
 
 > API REST + Docker + MySQL para o site institucional  
 > Stack: **PHP 8.3 com Laravel 13** · MySQL 8 · Nginx · Docker
